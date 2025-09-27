@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on Samposium</title>
+    <link>https://samnicholls.net/categories/</link>
+    <description>Recent content in Categories on Samposium</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 31 Aug 2023 22:53:22 +0100</lastBuildDate><atom:link href="https://samnicholls.net/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>meta</title>
+      <link>https://samnicholls.net/categories/meta/</link>
+      <pubDate>Thu, 31 Aug 2023 22:53:22 +0100</pubDate>
+      
+      <guid>https://samnicholls.net/categories/meta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bop</title>
+      <link>https://samnicholls.net/categories/bop/</link>
+      <pubDate>Mon, 28 Aug 2023 17:57:18 +0100</pubDate>
+      
+      <guid>https://samnicholls.net/categories/bop/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
