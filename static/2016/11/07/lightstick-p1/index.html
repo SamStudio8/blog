@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://samnicholls.net/xmlrpc.php">
+
+	
+	<title>Controlling a NeoPixel LED Strip and SD Card with a Arduino ESP8266: My Lightstick Prototype &#8211; Samposium</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Feed" href="https://samnicholls.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Comments Feed" href="https://samnicholls.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Controlling a NeoPixel LED Strip and SD Card with a Arduino ESP8266: My Lightstick Prototype Comments Feed" href="https://samnicholls.net/2016/11/07/lightstick-p1/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/samnicholls.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.5"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://samnicholls.net/wp-includes/css/dist/block-library/style.min.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slabo-css'  href='//fonts.googleapis.com/css?family=Slabo+27px&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fa-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/font-awesome.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='rd-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-custom-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/custom.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://samnicholls.net/wp-content/plugins/jetpack/css/jetpack.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/samnicholls.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/fd-footnotes/fdfootnotes.js?ver=1.34' id='fdfootnote_script-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/bootstrap.js?ver=5.7.5' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/custom.js?ver=5.7.5' id='js-custom-js'></script>
+<link rel="https://api.w.org/" href="https://samnicholls.net/wp-json/" /><link rel="alternate" type="application/json" href="https://samnicholls.net/wp-json/wp/v2/posts/1465" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://samnicholls.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://samnicholls.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.5" />
+<link rel="canonical" href="https://samnicholls.net/2016/11/07/lightstick-p1/" />
+<link rel='shortlink' href='https://wp.me/p6RfP0-nD' />
+<link rel="alternate" type="application/json+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2016%2F11%2F07%2Flightstick-p1%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2016%2F11%2F07%2Flightstick-p1%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62206786-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Controlling a NeoPixel LED Strip and SD Card with a Arduino ESP8266: My Lightstick Prototype" />
+<meta property="og:url" content="https://samnicholls.net/2016/11/07/lightstick-p1/" />
+<meta property="og:description" content="For quite some time now, I&#8217;ve been wanting to make an LED lightstick. So I did. It&#8217;s well nice." />
+<meta property="article:published_time" content="2016-11-07T10:26:12+00:00" />
+<meta property="article:modified_time" content="2016-11-07T10:31:06+00:00" />
+<meta property="og:site_name" content="Samposium" />
+<meta property="og:image" content="https://samnicholls.net/wp-content/uploads/2016/11/esp8266-node-mcu-pinout.png" />
+<meta property="og:image:width" content="700" />
+<meta property="og:image:height" content="590" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary" />
+</head>
+
+<body class="post-template-default single single-post postid-1465 single-format-standard">
+
+
+        
+<header id="main-header">
+    <nav class="navbar-default navbar-static-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rd-collapse">
+                    <span class="fa fa-bars"></span>
+                    <span class="sr-only screen-reader-text">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href=" https://samnicholls.net/">Samposium</a>            </div>
+            
+            <div id="rd-collapse" class="collapse navbar-collapse">
+            
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body class="post-template-default single single-post postid-1465 single-format-standard">
+
+<div id="main-menu" class="navbar-nav nav"><ul>
+<li class="page_item page-item-8"><a href="https://samnicholls.net/about/">About Me</a></li>
+<li class="page_item page-item-11"><a href="https://samnicholls.net/talks/">Talks</a></li>
+<li class="page_item page-item-15"><a href="https://samnicholls.net/things-i-have-learned/">Things I Have Learned</a></li>
+</ul></div></body></html>
+        </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="row"><!-- Content -->
+<section class="col-md-8 content-container">
+                          <article class="card post hentry post-1465 type-post status-publish format-standard category-esp8266 category-lightstick tag-arduino tag-esp8266 tag-leds tag-lightstick tag-neopixel tag-sd-card" id="post-1465">
+                <header class="entry-header">
+                        <h1 class="entry-title">Controlling a NeoPixel LED Strip and SD Card with a <strike>Arduino</strike> ESP8266: My Lightstick Prototype</h1>                </header><!-- .entry-header -->
+
+                <div class="meta-well">
+                    <span style="margin-right:15px;" class=""><span class="fa fa-user"></span>&nbsp;&nbsp;&nbsp;<span class="author vcard"><a class="url fn n" href="https://samnicholls.net/about/">Sam Nicholls</a></span></span>
+
+                    <span style="margin-right:15px;" class="entry-date published updated post-date"><span class="fa fa-clock-o"></span>&nbsp;&nbsp; <time class="entry-date published" datetime="2016-11-07T10:26:12+00:00">7th November 2016</time><time class="updated" datetime="2016-11-07T10:31:06+00:00">7th November 2016</time></span>                    <span style="margin-right:15px;" class=""><span class="fa fa-comments-o"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/2016/11/07/lightstick-p1/#respond"><span class="dsq-postid" data-dsqidentifier="1465 https://samnicholls.net/?p=1465">No Comments yet</span></a></span>
+                    <span class=""><span class="fa fa-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="https://samnicholls.net/category/hardware/esp8266/" rel="category tag">ESP8266</a>, <a href="https://samnicholls.net/category/hardware/lightstick/" rel="category tag">Lightstick</a></span>
+                </div>
+
+                <div class="entry-content"><p>For quite some time now, I&#8217;ve been wanting to make an LED lightstick as both a nice side-project to learn some hardware concepts and also to take pretty long-exposure pictures. However I&#8217;d always been a bit unsure as to where to start. Luckily for me, I&#8217;ve crossed paths with <a href="https://tomblanch.wordpress.com">someone who knows what they are doing: in the shape of Dr. Tom Blanchard</a>.</p>
+<div class="note">To skip the technical rambling and see some pretty pictures: check out my <a href="https://www.flickr.com/photos/samstudio8/albums/72157676244549425">Lightstick Flickr album</a>.</div>
+<h2>The Initial Prototype</h2>
+<p>Part of the reason I had put off starting this project was having to acquire and assemble many RGB LEDs into an array myself. Luckily <em>Adafruit</em> stock configurations of LEDs with an integrated driver (which they term <strong><a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/overview">NeoPixels</a></strong>) in various form factors, including chained together in 1m strips. Perfect! Now I could control a metre of RGB LEDs with just one pin from a microcontroller and some power. Having neatly avoided the hard task of sourcing and wiring-up enough RGB LEDs, and devising a signalling strategy to control them, the project was off the ground.<br />
+On Tom&#8217;s advice I purchased or commandeered the following components:</p>
+<ul>
+<li>Arduino Uno</li>
+<li><a href="https://www.proto-pic.co.uk/adafruit-neopixel-digital-rgb-led-strip-144-led-1m-black-black.html">NeoPixel Digital RGB LED Strip</a></li>
+<li><a href="https://www.coolcomponents.co.uk/5v-9a-step-down-voltage-regulator-d24v90f5.html">5V Step Down Voltage Regulator</a></li>
+<li><a href="https://www.amazon.co.uk/Venom-2000mAh-Battery-Universal-System/dp/B002AK38TS/">Some sort of a battery</a></li>
+<li><a href="https://www.google.co.uk/search?q=stick&amp;tbm=isch">A stick</a></li>
+<li>Sellotape</li>
+</ul>
+<p>There are already plenty of good tutorials on driving Neopixels with an Arduino (<a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/basic-connections">Adafruit&#8217;s help pages are great</a>), but I&#8217;ll attempt to briefly describe the construction of our first prototype, without giving the impression that this is a tutorial.</p>
+<p>The primary structural component is sellotape; affixing the NeoPixel strip to the wooden dowel (which was not previously used by Tom to hang laundry), as well as the Arduino, voltage regulator and cabling. The battery cables are connected to the <code>VIN</code> and <code>GND</code> pins on the input side of the voltage regulator, responsible for stepping down the voltage to the <code>5V</code> desired by the Arduino and Neopixels. The <code>VOUT</code> and <code>GND</code> regulator pins are connected separately to <strong>both</strong> the Arduino, and Neopixel strip.</p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190729.jpg"><img class="wp-image-1521 size-large" src="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190729-1024x452.jpg" alt="img_20161031_190729" width="80%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190729-1024x452.jpg 1024w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190729-300x132.jpg 300w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190729-768x339.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<p>Tom bastardised a USB Type-B cable to power the Arduino Uno from the voltage regulator. The Neopixels are controlled with just one pin from the microcontroller (the green cable in the diagram below), any spare digital output pin will do. There seemed to be an additional grounding cable (white) from the NeoPixel strip, so I plugged this into the Arduino <code>GND</code>.</p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190706.jpg"><img class="alignnone size-large wp-image-1482" src="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190706-1024x599.jpg" alt="img_20161031_190706" width="100%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190706-1024x599.jpg 1024w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190706-300x175.jpg 300w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161031_190706-768x449.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<p>In terms of programming, the hard part of interfacing with the NeoPixels has been dealt with by the lovely Adafruit team already, and their library can be easily downloaded via the Arduino IDE (<a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation">see instructions for details</a>). To test the prototype we just loaded the <code>strandtest</code> sample code.</p>
+<blockquote class="twitter-tweet" data-lang="en">
+<p dir="ltr" lang="en">COMING 2017, SAM &amp; TOM ENTERPRISE&#8217;S LIGHTSABER. CHECK BORCHURE FOR DETAILS. <a href="https://t.co/SLctKPe0as">pic.twitter.com/SLctKPe0as</a></p>
+<p>— SAM &amp; TOM INDUSTRIES (@samtomindustrys) <a href="https://twitter.com/samtomindustrys/status/793188675676962817">October 31, 2016</a></p></blockquote>
+<p><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<h2>Switching the Arduino for an ESP8266</h2>
+<p>The Arduino is not only rather chunky, but pretty overpowered for simply driving a NeoPixel strip. Despite a working prototype, I wanted to switch out the Arduino for something smaller. Checking my robotics toolbox, I found an <strong><code>ESP8266</code></strong> lying around in the form of a <strong>NodeMCU</strong>.</p>
+<h3>Programming an ESP8266 with the Arduino IDE</h3>
+<p>Helpfully, we can program the ESP8266 from the Arduino IDE. This is nice, because although I don&#8217;t particularly like the Arduino IDE, it means I don&#8217;t have to learn how to program the controller from the command line properly; a boon for my lazy self. The relevant ESP8266 board configuration packages can be installed using the Arduino IDE Boards Manager (<a href="https://github.com/esp8266/Arduino#installing-with-boards-manager">short instructions here</a>).</p>
+<p>For testing purposes I borrowed a NeoPixel Ring, primarily because it can be powered over USB (via any of the <code>3.3V</code> output pins), and also for its more manageable size when breadboarding. I attached the NeoPixel Ring to one of the <code>3.3V</code> and <code>GND</code> of the board. I modified <code>strandtest</code> to adjust the number of NeoPixels in the constructor (the ring has 12, compared to the 1m strip of 144) and inserted the signal cable in pin <code>D6</code>.</p>
+<p>Nothing happened.</p>
+<p>After more swearing and head scratching than I would like to admit, I discovered that the <strong>ESP8266<sup id="fnref-1465-1"><a href="#fn-1465-1" rel="footnote">1</a></sup> uses GPIO pin numbers, not physical pin numbers</strong>. That is, one must refer to the <em>pinout diagram</em> to discover the correct pin numbers to use when referring to them in code. More embarrassingly, and perhaps more critically I found that the circuit worked if I shifted my power and ground cables on the breadboard such that they actually lined up with the <code>3.3V</code> and <code>GND</code> of the NodeMCU. Woops.</p>
+<p><a href="http://www.kloppenborg.net/blog/microcontrollers/2016/08/02/getting-started-with-the-esp8266"><img class="alignnone size-large wp-image-1487" src="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161104_165649-1024x508.jpg" alt="img_20161104_165649" width="100%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161104_165649-1024x508.jpg 1024w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161104_165649-300x149.jpg 300w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161104_165649-768x381.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<p>For future reference I&#8217;ve found the following two pinout diagrams quite invaluable.<br />
+<strong>Note the diagrams are in different orientations</strong>, which totally didn&#8217;t cause me to incorrectly wire my NodeMCU twice.</p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2016/11/esp8266-node-mcu-pinout.png"><img class="alignnone size-full wp-image-1549" src="https://samnicholls.net/wp-content/uploads/2016/11/esp8266-node-mcu-pinout.png" alt="esp8266-node-mcu-pinout" width="70%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/esp8266-node-mcu-pinout.png 700w, https://samnicholls.net/wp-content/uploads/2016/11/esp8266-node-mcu-pinout-300x253.png 300w" sizes="(max-width: 700px) 100vw, 700px" /></a></p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2016/11/esp8266_devkit_horizontal-01.png"><img class="alignnone size-large wp-image-1550" src="https://samnicholls.net/wp-content/uploads/2016/11/esp8266_devkit_horizontal-01-1024x791.png" alt="esp8266_devkit_horizontal-01" width="90%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/esp8266_devkit_horizontal-01.png 1024w, https://samnicholls.net/wp-content/uploads/2016/11/esp8266_devkit_horizontal-01-300x232.png 300w, https://samnicholls.net/wp-content/uploads/2016/11/esp8266_devkit_horizontal-01-768x593.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<h3>ESP8266 Lightstick Prototype</h3>
+<p>Having got the ESP8266 working with the NeoPixel on the breadboard, it was trivial to switch out the Arduino in our prototype. Simpy connect the <code>VIN</code> and <code>GND</code> pins to the voltage regulator output in place of the Arduino, and connect the NeoPixel signal cable to any free GPIO pin (remember <code>~D6</code> is <code>GPIO 12</code>). <strong>When programming the NodeMCU over USB, always unplug <code>VIN</code> and <code>GND</code>: otherwise the circuit will attempt to light the entire NeoPixel strip over USB&#8230;</strong></p>
+<blockquote class="twitter-tweet" data-lang="en">
+<p dir="ltr" lang="en">SAM AND TOM INDUSTRYS ANNOUNCEMENT OF MARK TWO LIGHTSTICK WITH 100% LESS OF AN ARDUINO <a href="https://t.co/RXNKbKjlb0">pic.twitter.com/RXNKbKjlb0</a></p>
+<p>— SAM &amp; TOM INDUSTRIES (@samtomindustrys) <a href="https://twitter.com/samtomindustrys/status/794612260123639808">November 4, 2016</a></p></blockquote>
+<p><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<h2>Controlling an SD Card Reader with a ESP8266</h2>
+<p>Tom and I had an idea where we wanted to be able to load LED configurations from files on an SD card. Unfortunately this involved moving everything back to a breadboard, ruining the lovely miniaturised form factor we&#8217;d earned by switching to the ESP8266 in the first place. I unsoldered the cables attached to the controller and repinned everything on the breadboard, with an SD card reader I had ordered for another project that I&#8217;ve been putting off.</p>
+<p>Getting the SD card working turned out to be a rather frustrating side-quest. I had difficulty finding documentation online, as well as decently drawn wiring diagrams for terms including &#8220;8266&#8221; and &#8220;SD Card&#8221;. Tom suggested I search instead for information on the &#8220;SPI&#8221; pins (<em>Serial Peripheral Interface</em>) instead. This yielded better results, but I still had trouble trying to read an SD card. I was using the various <a href="https://github.com/esp8266/Arduino/tree/master/libraries/SD/examples">code examples hosted by the Arduino project on Github for the SD card library</a> to test the set-up, to no avail. I referred to my pinout diagrams repeatedly, before eventually noticing that one of them was upside down when compared to the other, which had complicated my attempts to wire and configure the board.</p>
+<p>Despite this, I still couldn&#8217;t seem to get a signal over the <code>SDCMD (CS)</code> pin. After almost half an hour of searching, I read that this <code>SPI</code> interface would often conflict with operational code already running on the microcontroller. I don&#8217;t know if this is true, but I swapped over to the <code>HSPI</code> pins (Hardware SPI) on the opposite side of the board (<code>GPIO 12</code> to <code>GPIO 15</code>) in the following configuration:</p>
+<ul>
+<li><strong><code>CS</code></strong> to <code>D8 (GPIO 15)</code></li>
+<li><strong><code>DI</code></strong> to <code>D7 (GPIO 13)</code></li>
+<li><strong><code>DO</code></strong> to <code>D6 (GPIO 12)</code></li>
+<li><strong><code>CLK</code></strong> to <code>D5 (GPIO 14)</code></li>
+<li><strong><code>3v</code></strong> and <strong><code>GND</code></strong> to the likely suspects&#8230;</li>
+</ul>
+<p><a href="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_153325.jpg"><img class="alignnone size-large wp-image-1488" src="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_153325-1024x768.jpg" alt="img_20161106_153325" width="100%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_153325-1024x768.jpg 1024w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_153325-300x225.jpg 300w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_153325-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<p>Success! Finally the <code>CardInfo</code> and <code>ReadWrite</code> examples worked! I could initialise an SD card, as well as read and write arbitrary files on that card. I created a quick file format where the first line consists of the number of RGB colour lines in the file; <code>N</code> followed by that many <code>10 byte</code> lines containing 0-padded strings defining an RGB colour in the format: <code>RRRGGGBBB\n</code>. For example:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105c56dca1801359503" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+4
+255020147
+255000000
+000255000
+000000255</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105c56dca1801359503-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105c56dca1801359503-2">2</div><div class="crayon-num" data-line="crayon-64f105c56dca1801359503-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105c56dca1801359503-4">4</div><div class="crayon-num" data-line="crayon-64f105c56dca1801359503-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105c56dca1801359503-1"><span class="crayon-cn">4</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105c56dca1801359503-2"><span class="crayon-cn">255020147</span></div><div class="crayon-line" id="crayon-64f105c56dca1801359503-3"><span class="crayon-cn">255000000</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105c56dca1801359503-4"><span class="crayon-cn">000255000</span></div><div class="crayon-line" id="crayon-64f105c56dca1801359503-5"><span class="crayon-cn">000000255</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>The latest prototype can now read this format from an SD card, and cycle through the selected colours. Cool! If you&#8217;re interested, <a href="https://github.com/SAM-AND-TOM-ENTERPRISES/lightstick/">our Lightstick code is on Github</a>. Below is the v0.2 prototype breadboard affixed to the ex-laundry stick, with my favourite structural adhesive<sup id="fnref-1465-2"><a href="#fn-1465-2" rel="footnote">2</a></sup>.</p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_164626.jpg"><img class="alignnone size-large wp-image-1491" src="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_164626-768x1024.jpg" alt="img_20161106_164626" width="50%" srcset="https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_164626-768x1024.jpg 768w, https://samnicholls.net/wp-content/uploads/2016/11/IMG_20161106_164626-225x300.jpg 225w" sizes="(max-width: 768px) 100vw, 768px" /></a></p>
+<h2>Pretty Photos</h2>
+<p>Our lightstick was ready for a proper test. We wandered campus last night looking for interesting patches of darkness to paint and took a bunch of long-exposure images. I&#8217;ve put a few of them on Flickr (below). Although just a prototype, I&#8217;m really pleased with the results. There are still a bunch of enhancements to make, and a few <a href="https://github.com/SAM-AND-TOM-ENTERPRISES/lightstick/issues">issues to iron out</a>. Particularly voltage monitoring (so as to not drain the battery permanently), and levelling the brightness of some of the LED colours which can wash out the others.</p>
+<p><a data-flickr-embed="true" data-header="true"  href="https://www.flickr.com/photos/samstudio8/albums/72157676244549425" title="Lightstick"><img src="https://c1.staticflickr.com/6/5714/30712930392_a1b5b27a01_z.jpg" width="100%" alt="Lightstick"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script></p>
+<p>It&#8217;s really cool to have actually put something together that works!</p>
+<h1>tl;dr</h1>
+<ul>
+<li>NeoPixels are pretty cool</li>
+<li>Sellotape is a perfectly acceptable structural component no matter what Tom says</li>
+<li>The ESP8266 is a tiny board of awesome</li>
+<li>When specifying pins on the ESP8266, you need to use the GPIO number (<em>e.g.</em> <code>D6 == GPIO 12</code>)</li>
+<li>When comparing pinout diagrams, ensure they are the same orientation to avoid wiring everything incorrectly multiple times</li>
+<li>Electronics seems to be quite a frustrating endeavour</li>
+<li>It&#8217;s quite easy to fuck up electronics and make things not work permanently<sup id="fnref-1465-3"><a href="#fn-1465-3" rel="footnote">3</a></sup></li>
+<li>I MADE A THING</li>
+</ul>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-1465-1">
+Or at least the board I have&#8230;&#160;<a href="#fnref-1465-1" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-1465-2">
+Tom finally suggested that I should perhaps consider switching to electrical tape, for its anti-static, anti-conductive properties, which I gather come in handy in this field, or something.&#160;<a href="#fnref-1465-2" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-1465-3">
+I haven&#8217;t done this yet, but I&#8217;ve come close to irrevocably draining my new battery&#160;<a href="#fnref-1465-3" rev="footnote">&#8617;</a>
+</li>
+</ol>
+</div>
+</div>
+                
+                        <div class="tag-well"><span><span class="fa fa-tags"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/tag/arduino/" rel="tag">arduino</a>,&nbsp; <a href="https://samnicholls.net/tag/esp8266/" rel="tag">esp8266</a>,&nbsp; <a href="https://samnicholls.net/tag/leds/" rel="tag">leds</a>,&nbsp; <a href="https://samnicholls.net/tag/lightstick/" rel="tag">lightstick</a>,&nbsp; <a href="https://samnicholls.net/tag/neopixel/" rel="tag">neopixel</a>,&nbsp; <a href="https://samnicholls.net/tag/sd-card/" rel="tag">sd card</a></span></div>
+                
+                <nav class="further-reading">
+	<div class="previous">
+		<span>Previous Post</span>
+		<a href="https://samnicholls.net/2016/11/03/talks-and-metaphors/">Interdisciplinary talks and the metaphor-ome: Harder than metagenomics itself?</a>
+	</div>
+	<div class="next">
+		<span>Next Post</span>
+		<a href="https://samnicholls.net/2016/11/16/disorganised-disaster/">Bioinformatics is a disorganised disaster and I am too. So I made a shell.</a>
+	</div>
+</nav>            </article>
+                                <div class="card">
+
+<div id="disqus_thread"></div>
+                </div>
+    
+</section>
+
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar-container">
+		            <div id="widget-area" class="widget-area" role="complementary">
+                <div id="custom_html-3" class="widget_text card widget widget_custom_html"><div class="textwidget custom-html-widget"><img src="https://pbs.twimg.com/profile_images/1044255545610436609/wt33ZbtU_400x400.jpg" height=120 style="margin-top: 20px; margin-right:10px; float: left;" alt="Sam Nicholls" />
+<div style="padding-top:15px; line-height: normal"><b style="font-size: 1.2em">Sam Nicholls</b><br><span style="font-size: 0.9em;">Haplotype Wrangler at University of Birmingham.<br>I tell computers to do things, then I write about how it all went wrong.</span></div></div></div><div id="search-2" class="card widget widget_search"><form style="margin-top:15px" action="https://samnicholls.net/" id="searchform" method="get" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" name="s" id="s" placeholder="e.g. Search...">
+    </div>
+</form>
+</div><div id="twitter_timeline-5" class="card widget widget_twitter_timeline"><a class="twitter-timeline" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/samstudio8">My Tweets</a></div><div id="categories-5" class="card widget widget_categories"><h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://samnicholls.net/category/bioinf/">Bioinformatics</a>
+<ul class='children'>
+	<li class="cat-item cat-item-8"><a href="https://samnicholls.net/category/bioinf/au-phd/">AU-PhD</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://samnicholls.net/category/bioinf/sanger-qc/" title="Sanger QC Project">Sanger-QC</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="https://samnicholls.net/category/bioinf/tools/">Tools</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-185"><a href="https://samnicholls.net/category/bioinf/tools/chitin/">chitin</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-80"><a href="https://samnicholls.net/category/devops/">Devops</a>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://samnicholls.net/category/event/">Event</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://samnicholls.net/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-176"><a href="https://samnicholls.net/category/hardware/">Hardware</a>
+<ul class='children'>
+	<li class="cat-item cat-item-223"><a href="https://samnicholls.net/category/hardware/beehive-monitor/">Beehive Monitor</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="https://samnicholls.net/category/hardware/esp8266/">ESP8266</a>
+</li>
+	<li class="cat-item cat-item-236"><a href="https://samnicholls.net/category/hardware/lego-sequencer/">Lego Sequencer</a>
+</li>
+	<li class="cat-item cat-item-177"><a href="https://samnicholls.net/category/hardware/lightstick/">Lightstick</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-151"><a href="https://samnicholls.net/category/lab/">Lab</a>
+<ul class='children'>
+	<li class="cat-item cat-item-150"><a href="https://samnicholls.net/category/lab/protocol-guides/">Protocol Guides</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://samnicholls.net/category/meta/">Meta</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="https://samnicholls.net/category/mysteries/">Mysteries</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://samnicholls.net/category/personal/">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://samnicholls.net/category/photo/">Photography</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="https://samnicholls.net/category/programming/">Programming</a>
+<ul class='children'>
+	<li class="cat-item cat-item-145"><a href="https://samnicholls.net/category/programming/documentation/">Documentation</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="https://samnicholls.net/category/programming/python/">Python</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-48"><a href="https://samnicholls.net/category/status-report/">Status Report</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="https://samnicholls.net/category/sysadm/">System Administration</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://samnicholls.net/category/uncategorised/">Uncategorised</a>
+</li>
+			</ul>
+
+			</div>            </div>
+		        </aside>
+    </div>
+
+</div> <!-- /container -->
+
+<footer id="main-footer" class="bg-primary">
+	<div id="footer-widgets" class="container">
+		    </div>
+</footer>
+
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/comment-reply.min.js?ver=5.7.5' id='comment-reply-js'></script>
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"samposium-blog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17' id='disqus_count-js'></script>
+<script type='text/javascript' id='disqus_embed-js-extra'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"1465 https:\/\/samnicholls.net\/?p=1465","disqusShortname":"samposium-blog","disqusTitle":"Controlling a NeoPixel LED Strip and SD Card with a Arduino ESP8266: My Lightstick Prototype","disqusUrl":"https:\/\/samnicholls.net\/2016\/11\/07\/lightstick-p1\/","postId":"1465"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17' id='disqus_embed-js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202335' id='devicepx-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/jetpack/_inc/twitter-timeline.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/wp-embed.min.js?ver=5.7.5' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202335.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.9',blog:'101350222',post:'1465',tz:'1',srv:'samnicholls.net'} ]);
+	_stq.push([ 'clickTrackerInit', '101350222', '1465' ]);
+</script>
+
+<script type="text/javascript">
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+
+var collapsed = false;
+jQuery( document ).ready(function($) {
+    $('.navbar-toggle').click(function(){
+        console.log(collapsed);
+        if(collapsed) {
+            $('.navbar-header > button').html('<i class="fa fa-bars"></i>');
+        } else {
+            $('.navbar-header > button').html('<i class="fa fa-times"></i>');
+        }
+        $('.navbar-collapse').toggle(200);
+        collapsed = !collapsed;
+    });
+});
+</script>
+	
+</body>
+
+</html>

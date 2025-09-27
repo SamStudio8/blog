@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://samnicholls.net/xmlrpc.php">
+
+	
+	<title>An idiot&#8217;s guide to Python documentation with Sphinx and ReadTheDocs &#8211; Samposium</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Feed" href="https://samnicholls.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Comments Feed" href="https://samnicholls.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; An idiot&#8217;s guide to Python documentation with Sphinx and ReadTheDocs Comments Feed" href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/samnicholls.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.5"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://samnicholls.net/wp-includes/css/dist/block-library/style.min.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slabo-css'  href='//fonts.googleapis.com/css?family=Slabo+27px&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fa-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/font-awesome.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='rd-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-custom-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/custom.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://samnicholls.net/wp-content/plugins/jetpack/css/jetpack.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/samnicholls.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/fd-footnotes/fdfootnotes.js?ver=1.34' id='fdfootnote_script-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/bootstrap.js?ver=5.7.5' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/custom.js?ver=5.7.5' id='js-custom-js'></script>
+<link rel="https://api.w.org/" href="https://samnicholls.net/wp-json/" /><link rel="alternate" type="application/json" href="https://samnicholls.net/wp-json/wp/v2/posts/841" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://samnicholls.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://samnicholls.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.5" />
+<link rel="canonical" href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/" />
+<link rel='shortlink' href='https://wp.me/p6RfP0-dz' />
+<link rel="alternate" type="application/json+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2016%2F06%2F15%2Fhow-to-sphinx-readthedocs%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2016%2F06%2F15%2Fhow-to-sphinx-readthedocs%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62206786-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="An idiot&#8217;s guide to Python documentation with Sphinx and ReadTheDocs" />
+<meta property="og:url" content="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/" />
+<meta property="og:description" content="This is the third occasion that I’ve come to set up a Python package&#8217;s documentation. It is also the third occasion where I’ve spent many hours and commits trying to work out how I made every…" />
+<meta property="article:published_time" content="2016-06-15T00:29:53+00:00" />
+<meta property="article:modified_time" content="2018-01-17T23:14:07+00:00" />
+<meta property="og:site_name" content="Samposium" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary" />
+</head>
+
+<body class="post-template-default single single-post postid-841 single-format-standard">
+
+
+        
+<header id="main-header">
+    <nav class="navbar-default navbar-static-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rd-collapse">
+                    <span class="fa fa-bars"></span>
+                    <span class="sr-only screen-reader-text">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href=" https://samnicholls.net/">Samposium</a>            </div>
+            
+            <div id="rd-collapse" class="collapse navbar-collapse">
+            
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body class="post-template-default single single-post postid-841 single-format-standard">
+
+<div id="main-menu" class="navbar-nav nav"><ul>
+<li class="page_item page-item-8"><a href="https://samnicholls.net/about/">About Me</a></li>
+<li class="page_item page-item-11"><a href="https://samnicholls.net/talks/">Talks</a></li>
+<li class="page_item page-item-15"><a href="https://samnicholls.net/things-i-have-learned/">Things I Have Learned</a></li>
+</ul></div></body></html>
+        </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="row"><!-- Content -->
+<section class="col-md-8 content-container">
+                          <article class="card post hentry post-841 type-post status-publish format-standard category-documentation category-python tag-autodoc tag-config tag-docstring tag-documentation tag-napoleon tag-numpy tag-py-modindex tag-python tag-readthedocs tag-sphinx tag-sphinx-autodoc tag-sphinx-napoleon tag-theme" id="post-841">
+                <header class="entry-header">
+                        <h1 class="entry-title">An idiot&#8217;s guide to Python documentation with Sphinx and ReadTheDocs</h1>                </header><!-- .entry-header -->
+
+                <div class="meta-well">
+                    <span style="margin-right:15px;" class=""><span class="fa fa-user"></span>&nbsp;&nbsp;&nbsp;<span class="author vcard"><a class="url fn n" href="https://samnicholls.net/about/">Sam Nicholls</a></span></span>
+
+                    <span style="margin-right:15px;" class="entry-date published updated post-date"><span class="fa fa-clock-o"></span>&nbsp;&nbsp; <time class="entry-date published" datetime="2016-06-15T01:29:53+01:00">15th June 2016</time><time class="updated" datetime="2018-01-17T23:14:07+00:00">17th January 2018</time></span>                    <span style="margin-right:15px;" class=""><span class="fa fa-comments-o"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/#respond"><span class="dsq-postid" data-dsqidentifier="841 https://samnicholls.net/?p=841">No Comments yet</span></a></span>
+                    <span class=""><span class="fa fa-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="https://samnicholls.net/category/programming/documentation/" rel="category tag">Documentation</a>, <a href="https://samnicholls.net/category/programming/python/" rel="category tag">Python</a></span>
+                </div>
+
+                <div class="entry-content"><p>This is the third occasion that I&#8217;ve come to set up a Python package with all the trimmings, including nice looking Sphinx-backed documentation hosted on <a href="https://readthedocs.org/">ReadTheDocs</a>. It is also the third occasion where I&#8217;ve spent a few hours and a dozen commits trying to work out how I made everything work last time.</p>
+<blockquote class="twitter-tweet" data-lang="en">
+<p dir="ltr" lang="en">jesus christ my repos are just full of garbage commits to get sphinx and travis to work</p>
+<p>— Sam Nicholls (@samstudio8) <a href="https://twitter.com/samstudio8/status/742801856217370628">June 14, 2016</a></p></blockquote>
+<p><script src="//platform.twitter.com/widgets.js" async="" charset="utf-8"></script></p>
+<p>So for my future sanity and possibly yours, here&#8217;s a quick guide<sup id="fnref-841-3"><a href="#fn-841-3" class="jetpack-footnote">1</a></sup> (and some links to resources) on how to do the things that I don&#8217;t do often enough to remember first hand.</p>
+<h2>To begin&#8230;</h2>
+<p>Install <code>Sphinx</code><sup id="fnref-841-1"><a href="#fn-841-1" class="jetpack-footnote">2</a></sup>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18ea723259630" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+pip install Sphinx</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18ea723259630-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18ea723259630-1"><span class="crayon-e">pip </span><span class="crayon-e">install </span><span class="crayon-v">Sphinx</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p></p>
+<p>From the root of your project, initialise the <code>docs/</code> directory with <code>sphinx-quickstart</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18f2533648066" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+mkdir docs
+cd docs/
+sphinx-quickstart</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18f2533648066-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c18f2533648066-2">2</div><div class="crayon-num" data-line="crayon-64f105d0c18f2533648066-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18f2533648066-1"><span class="crayon-r">mkdir</span><span class="crayon-h"> </span><span class="crayon-e">docs</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c18f2533648066-2"><span class="crayon-r">cd</span><span class="crayon-h"> </span><span class="crayon-v">docs</span><span class="crayon-o">/</span></div><div class="crayon-line" id="crayon-64f105d0c18f2533648066-3"><span class="crayon-v">sphinx</span><span class="crayon-o">-</span><span class="crayon-v">quickstart</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p><code>sphinx-quickstart</code> rapidly fires a series of prompts, the defaults are typically sensible, but enable <code>autodoc</code> when prompted. <code>intersphinx</code> might be useful if you have projects whose documentation may cross-reference eachother. <code>viewcode</code> adds links to source code from module listings, which could be helpful to end users. Make good use of the provided <code>Makefile</code>.</p>
+<p><code>doc/</code> is also an acceptable directory name, by default, <code>ReadTheDocs</code> looks for either, before rummaging around your whole repository looking for something that appears to be documentation.</p>
+<h2>Generate module API docs</h2>
+<p>Assuming you enabled the <code>autodoc</code> extension, <code>Sphinx</code> can be set-up to automatically build a nice module index (<a href="http://goldilocks.readthedocs.io/en/latest/py-modindex.html">such as the one found on the Goldilocks documentation</a>) with links to documentation generated from the <code>docstrings</code> of your modules and classes; which is both pretty and a nice excuse to document your code properly too.</p>
+<p>However this feature doesn&#8217;t work out of the box as you must first kickstart the API documentation with <code>sphinx-apidoc</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18f5684305045" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+cd docs/
+sphinx-apidoc -o source/ ../&lt;package&gt;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18f5684305045-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c18f5684305045-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18f5684305045-1"><span class="crayon-r">cd</span><span class="crayon-h"> </span><span class="crayon-v">docs</span><span class="crayon-o">/</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c18f5684305045-2"><span class="crayon-v">sphinx</span><span class="crayon-o">-</span><span class="crayon-v">apidoc</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">o</span><span class="crayon-h"> </span><span class="crayon-v">source</span><span class="crayon-o">/</span><span class="crayon-h"> </span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-o">&lt;</span><span class="crayon-t">package</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<p>Be sure to set the <code>-o outputdir</code> that will contain the generated Sphinx source files to <code>source/</code>. This took me a while to figure out, but without it (say just dumping everything into the <code>docs/</code> directory), the <code>py-modindex.html</code> file would not be generated when built by <code>ReadTheDocs</code> and would thus be missing, causing a 404 on the website<sup id="fnref-841-2"><a href="#fn-841-2" class="jetpack-footnote">3</a></sup>. <code>sourcedir</code> (which is more sensibly called <code>module_path</code> in the Sphinx documentation) should point to your Python package (e.g. <code>../&lt;package&gt;</code>)<sup id="fnref-841-5"><a href="#fn-841-5" class="jetpack-footnote">4</a></sup>.</p>
+<p>Continue reading to find out why this still won&#8217;t work yet.</p>
+<h2>Configuration</h2>
+<p><code>Sphinx</code> is configured by a <code>conf.py</code> that sits in the <code>docs/</code> directory. The majority of important configuration options have already been set for you by <code>sphinx-quickstart</code> but here are a couple of things that I typically alter:</p>
+<h3>Theme</h3>
+<p>At the time of writing, the default theme is <em>alabaster</em>, rocked by various projects including the glorious <a href="http://docs.python-requests.org/en/master/">requests package</a>. However I actually like the <code>ReadTheDocs</code> default theme (<a href="http://www.sphinx-doc.org/en/stable/theming.html#builtin-themes">other themes are available</a>) and alter the <code>html_theme</code> accordingly:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18f8943984784" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+html_theme = 'sphinx_rtd_theme'</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18f8943984784-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18f8943984784-1"><span class="crayon-v">html_theme</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-s">'sphinx_rtd_theme'</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<h3>Make <code>autodoc</code> actually work</h3>
+<p><code>sphinx-apidoc</code> merely generates &#8220;stubs&#8221; for each of your modules. The stubs contain <code>automodule</code> directives which in turn inform <code>sphinx-build</code> to invoke <code>autodoc</code> to do the heavy lifting of actually generating the API documentation from the <code>docstrings</code> of a particular module. I&#8217;ve found that out of the box, I just get a screenful of <code>ImportError</code>&#8216;s from <code>autodoc</code> during <code>sphinx-build</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18fb360238545" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WARNING: autodoc: failed to import module</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18fb360238545-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18fb360238545-1"><span class="crayon-v">WARNING</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">autodoc</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">failed </span><span class="crayon-st">to</span><span class="crayon-h"> </span><span class="crayon-e">import </span><span class="crayon-v">module</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>To ensure that <code>sphinx-build</code> can import your package and generate some lovely API documentation (and that all important module index; <code>py-modindex</code>), simply uncomment this line near the top of <code>conf.py</code> and those warnings should disappear on your next attempt at <code>make html</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18fd642457328" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+sys.path.insert(0, os.path.abspath('.'))</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18fd642457328-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c18fd642457328-2">2</div><div class="crayon-num" data-line="crayon-64f105d0c18fd642457328-3">3</div><div class="crayon-num crayon-marked-num crayon-top crayon-bottom crayon-striped-num" data-line="crayon-64f105d0c18fd642457328-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18fd642457328-1"><span class="crayon-c"># If extensions (or modules to document with autodoc) are in another directory,</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c18fd642457328-2"><span class="crayon-c"># add these directories to sys.path here. If the directory is relative to the</span></div><div class="crayon-line" id="crayon-64f105d0c18fd642457328-3"><span class="crayon-c"># documentation root, use os.path.abspath to make it absolute, like shown here.</span></div><div class="crayon-line crayon-marked-line crayon-top crayon-bottom crayon-striped-line" id="crayon-64f105d0c18fd642457328-4"><span class="crayon-k ">sys</span><span class="crayon-sy">.</span><span class="crayon-v">path</span><span class="crayon-sy">.</span><span class="crayon-e">insert</span><span class="crayon-sy">(</span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-k ">os.path</span><span class="crayon-sy">.</span><span class="crayon-e">abspath</span><span class="crayon-sy">(</span><span class="crayon-s">'.'</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>For some reason however, this fix doesn&#8217;t work in my latest project, so I added the following line beneath for good measure and all was well:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c18ff398528718" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+sys.path.insert(0, os.path.abspath('../'))</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c18ff398528718-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c18ff398528718-1"><span class="crayon-k ">sys</span><span class="crayon-sy">.</span><span class="crayon-v">path</span><span class="crayon-sy">.</span><span class="crayon-e">insert</span><span class="crayon-sy">(</span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-k ">os.path</span><span class="crayon-sy">.</span><span class="crayon-e">abspath</span><span class="crayon-sy">(</span><span class="crayon-s">'../'</span><span class="crayon-sy">)</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<h2><code>numpy</code> style documentation with Napoleon</h2>
+<p>I find reStructuredText kinda grim for <code>docstrings</code>, so I use the <a href="http://www.sphinx-doc.org/en/stable/ext/napoleon.html"><code>sphinx-napoleon</code> extension</a>. This allows you to write <code>numpy</code> or <code>Google</code> style <code>docstrings</code> instead of dense blocks of quite difficult to read RST. As of <code>Sphinx</code> 1.3, the extension no longer needs to be manually installed and can be enabled in the same way as other extensions, like the <code>autodoc</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c1901846879820" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+extensions = [
+    ...
+    'sphinx.ext.napoleon',
+]
+
+napoleon_google_docstring = False
+napoleon_use_param = False
+napoleon_use_ivar = True</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c1901846879820-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1901846879820-2">2</div><div class="crayon-num" data-line="crayon-64f105d0c1901846879820-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1901846879820-4">4</div><div class="crayon-num" data-line="crayon-64f105d0c1901846879820-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1901846879820-6">6</div><div class="crayon-num" data-line="crayon-64f105d0c1901846879820-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1901846879820-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c1901846879820-1"><span class="crayon-v">extensions</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-sy">[</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1901846879820-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span></div><div class="crayon-line" id="crayon-64f105d0c1901846879820-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-s">'sphinx.ext.napoleon'</span><span class="crayon-sy">,</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1901846879820-4"><span class="crayon-sy">]</span></div><div class="crayon-line" id="crayon-64f105d0c1901846879820-5">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1901846879820-6"><span class="crayon-v">napoleon_google_docstring</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">False</span></div><div class="crayon-line" id="crayon-64f105d0c1901846879820-7"><span class="crayon-v">napoleon_use_param</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">False</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1901846879820-8"><span class="crayon-v">napoleon_use_ivar</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-t">True</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<p>Simply append <code>sphinx.ext.napoleon</code> to the <code>extensions</code> list. Underneath, I&#8217;ve added a few configuration options that disable parsing of Google-style docstrings and alter how parameters and return types for functions are formatted in the generated documentation to taste. You can read about the <a href="http://www.sphinx-doc.org/en/stable/ext/napoleon.html#configuration">napoleon configuration options on the official documentation</a> and decide for yourself which options you may want to override.</p>
+<p>As evident, I personally favour the <code>numpy</code> <code>docstring</code> style, <a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">which has a nice and simple guide that I keep misplacing</a>.</p>
+<h2>Include your README and CHANGELOG</h2>
+<p>My repository already has a <code>README.rst</code> and <code>CHANGELOG.rst</code>, which can quickly be added to our <code>Sphinx</code> documentation without duplication. First, add we&#8217;ll add them to the table of contents in <code>index.rst</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c1903441424536" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">docs/index.rst</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+[...]
+.. toctree::
+   :maxdepth: 2
+
+   readme
+   changelog
+[...]</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c1903441424536-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1903441424536-2">2</div><div class="crayon-num" data-line="crayon-64f105d0c1903441424536-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1903441424536-4">4</div><div class="crayon-num crayon-marked-num crayon-top" data-line="crayon-64f105d0c1903441424536-5">5</div><div class="crayon-num crayon-marked-num crayon-bottom crayon-striped-num" data-line="crayon-64f105d0c1903441424536-6">6</div><div class="crayon-num" data-line="crayon-64f105d0c1903441424536-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c1903441424536-1"><span class="crayon-sy">[</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">]</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1903441424536-2"><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-v">toctree</span><span class="crayon-o">::</span></div><div class="crayon-line" id="crayon-64f105d0c1903441424536-3"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-o">:</span><span class="crayon-v">maxdepth</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">2</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1903441424536-4">&nbsp;</div><div class="crayon-line crayon-marked-line crayon-top" id="crayon-64f105d0c1903441424536-5"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-e">readme</span></div><div class="crayon-line crayon-marked-line crayon-bottom crayon-striped-line" id="crayon-64f105d0c1903441424536-6"><span class="crayon-e">&nbsp;&nbsp; </span><span class="crayon-i">changelog</span></div><div class="crayon-line" id="crayon-64f105d0c1903441424536-7"><span class="crayon-sy">[</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">]</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>Now, we&#8217;ll add directives to new <code>readme.rst</code> and <code>changelog.rst</code> files to include the contents from the files in the root of the repository to save duplication. For example:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c1906202766239" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">docs/readme.rst</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+.. include:: ../README.rst</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c1906202766239-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c1906202766239-1"><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-h"> </span><span class="crayon-v">include</span><span class="crayon-o">::</span><span class="crayon-h"> </span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">README</span><span class="crayon-sy">.</span><span class="crayon-v">rst</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>Simple!</p>
+<h2>Enable <code>develop</code> branch doc on ReadTheDocs</h2>
+<p>Assuming you&#8217;ve actually set up <code>ReadTheDocs</code> (a very simple point-and-click adventure involving a short form, 2FA with Github and &#8220;importing&#8221; a project), familiarise yourself with <a href="https://readthedocs.org/dashboard/">your RTD dashboard</a>. Of immediate use is the <em>Versions</em> tab of a relevant project, from here you can enable documentation to be generated for the various branches of your project. Personally I like to have documentation available for the <code>develop</code> branch, for those who just can&#8217;t wait for things to be less broken in <code>master</code>.</p>
+<h2>Other general <code>Sphinx</code> tips</h2>
+<h3>Talking about classes and methods</h3>
+<p><code>Sphinx</code> has a really nifty feature where one can reference classes, functions and the like anywhere in your documentation (even <code>docstrings</code>, too), and it will generate a link to the relevant part of the documentation. However I always forget the syntax, and what this feature is called. Turns out, this is referencing <code>domains</code> in <code>Sphinx</code> terminology and the syntax for each domain is <a href="http://www.sphinx-doc.org/en/stable/domains.html#cross-referencing-python-objects">well documented on this page that I just have to keep finding</a>.</p>
+<h3>Custom CSS</h3>
+<p>One disagreement I have with the <code>Sphinx RTD</code> theme is how tables appear on smaller screens. Thankfully, it&#8217;s quite simple to add overrides to deal with minor design bothers like these. Just define a <code>setup</code> function in your <code>conf.py</code> that adds your stylesheet:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c1908934972298" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">docs/conf.py</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Python</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+...
+def setup(app):
+    app.add_stylesheet('theme_overrides.css')
+...</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c1908934972298-1">1</div><div class="crayon-num crayon-marked-num crayon-top crayon-striped-num" data-line="crayon-64f105d0c1908934972298-2">2</div><div class="crayon-num crayon-marked-num crayon-bottom" data-line="crayon-64f105d0c1908934972298-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c1908934972298-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c1908934972298-1"><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span></div><div class="crayon-line crayon-marked-line crayon-top crayon-striped-line" id="crayon-64f105d0c1908934972298-2"><span class="crayon-r">def</span><span class="crayon-h"> </span><span class="crayon-e">setup</span><span class="crayon-sy">(</span><span class="crayon-v">app</span><span class="crayon-sy">)</span><span class="crayon-o">:</span></div><div class="crayon-line crayon-marked-line crayon-bottom" id="crayon-64f105d0c1908934972298-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">app</span><span class="crayon-sy">.</span><span class="crayon-e">add_stylesheet</span><span class="crayon-sy">(</span><span class="crayon-s">'theme_overrides.css'</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c1908934972298-4"><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>I&#8217;m not sure if it particularly matters where this <code>setup</code> appears, but for the record, mine precedes the &#8220;Options for LaTeX output&#8221; comment line. Stylesheets and other &#8220;static&#8221; content are unsurprisingly expected to appear in the <code>_static</code> directory. If you don&#8217;t have a <code>docs/_static</code> directory, now would be a good time to create one and add it to version control. For the sake of completeness, or in case you also dislike the behaviour of tables under the default RTD theme, here is my <code>theme_overrides.css</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105d0c190a476229894" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">docs/_static/theme_overrides.css</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+/* override table width restrictions as found on https://github.com/getpelican/pelican/issues/1311 */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    /* !important prevents the common CSS stylesheets from
+       overriding this as on RTD they are loaded after this stylesheet */
+    white-space: normal !important;
+}
+
+.wy-table-responsive {
+    overflow: visible !important;
+}</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105d0c190a476229894-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c190a476229894-2">2</div><div class="crayon-num" data-line="crayon-64f105d0c190a476229894-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c190a476229894-4">4</div><div class="crayon-num" data-line="crayon-64f105d0c190a476229894-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c190a476229894-6">6</div><div class="crayon-num" data-line="crayon-64f105d0c190a476229894-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c190a476229894-8">8</div><div class="crayon-num" data-line="crayon-64f105d0c190a476229894-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105d0c190a476229894-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105d0c190a476229894-1"><span class="crayon-c">/* override table width restrictions as found on https://github.com/getpelican/pelican/issues/1311 */</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c190a476229894-2"><span class="crayon-k ">.wy-table-responsive table td, .wy-table-responsive table th </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-64f105d0c190a476229894-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-c">/* !important prevents the common CSS stylesheets from</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c190a476229894-4"><span class="crayon-c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; overriding this as on RTD they are loaded after this stylesheet */</span></div><div class="crayon-line" id="crayon-64f105d0c190a476229894-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e ">white-space</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">normal</span><span class="crayon-h"> </span><span class="crayon-cn ">!important</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c190a476229894-6"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-64f105d0c190a476229894-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c190a476229894-8"><span class="crayon-k ">.wy-table-responsive </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-64f105d0c190a476229894-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e ">overflow</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">visible</span><span class="crayon-h"> </span><span class="crayon-cn ">!important</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105d0c190a476229894-10"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<h3>Custom requirements</h3>
+<p>Before <code>Sphinx</code> 1.3, one had to install the <code>sphinx-napoleon</code> extension separately. Although this is no longer the case, you might find yourself wondering how to get custom plugins and the like to work with your <code>ReadTheDocs</code> documentation instance in future:</p>
+<ul>
+<li>Add the <strong>name of the extension</strong><sup id="fnref-841-4"><a href="#fn-841-4" class="jetpack-footnote">5</a></sup> to the <code>extensions</code> list in your <code>conf.py</code> as we have done previously.</li>
+<li>Create a newline delimited list of <strong>package names</strong> to be installed from <code>pip</code> in <code>docs/requirements.txt</code></li>
+<li>Navigate to the <em>Advanced Settings</em> of your ReadTheDocs project, and tick the <code>Install your project inside a virtualenv</code> option. Specify <code>docs/requirements.txt</code> in the text box underneath.</li>
+<li>Future builds are now automatically built inside a <code>virtualenv</code> and the necessary requirements are fetched with <code>pip</code>.</li>
+</ul>
+<hr />
+<h1>tl;dr</h1>
+<ul>
+<li><code>sphinx-quickstart</code> to, er, quickstart</li>
+<li><code>sphinx-apidoc</code> to generate API documentation stubs</li>
+<li>Ensure API doc lives in <code>docs/source/</code> to avoid ReadTheDocs&#8217; Sphinx builder not generating (missing) <code>py-modindex</code></li>
+<li>Set <code>html_theme</code> to <code>default</code> in <code>conf.py</code> for &#8220;standard&#8221; ReadTheDocs theme</li>
+<li>Uncomment system path line in <code>conf.py</code> (may also need to add <code>../</code>) to avoid Sphinx not finding your package and throwing import errors instead</li>
+<li>Check out the advanced settings (versions) on ReadTheDocs</li>
+<li>Read the <a href="http://www.sphinx-doc.org/en/stable/ext/napoleon.html#configuration">numpy docstring styleguide</a>, and <a href="http://www.sphinx-doc.org/en/stable/domains.html#cross-referencing-python-objects">about referencing Sphinx domains</a></li>
+<li>Add a <code>setup</code> function to <code>conf.py</code> to define additional (overriding) stylesheets</li>
+<li>Add a <code>docs/requirements.txt</code>, update your <code>conf.py</code> and tick the <code>virtualenv</code> option on ReadTheDocs Advanced Settings for your project to enable third party plugins via <code>pip</code>.</li>
+</ul>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-841-3">
+Alternatively, you could <a href="http://www.sphinx-doc.org/en/stable/tutorial.html">read the actual tutorial</a>, which I of course, did not.&#160;<a href="#fnref-841-3">&#8617;</a>
+</li>
+<li id="fn-841-1">
+Not to be confused with <a href="https://www.youtube.com/watch?v=-AqHoCnoa8E">S.P.H.I.N.X.</a> (<em>Sphinx!</em>)&#160;<a href="#fnref-841-1">&#8617;</a>
+</li>
+<li id="fn-841-2">
+I don&#8217;t know the cause of this, or whether I have just confounded the solution, but although my local <code>py-modindex.html</code> was generated just fine without the <code>source/</code> directory, the ReadTheDocs version still threw a 404. Invoking <code>sphinx-apidoc</code> to write to <code>docs/source/</code> instead (and committing those files) seemed to make the module index appear on RTD.<em>Shrug</em>.<sup id="fnref-841-6"><a href="#fn-841-6" class="jetpack-footnote">6</a></sup>&#160;<a href="#fnref-841-2">&#8617;</a>
+</li>
+<li id="fn-841-5">
+Thanks Tim!&#160;<a href="#fnref-841-5">&#8617;</a>
+</li>
+<li id="fn-841-4">
+This is in bold, as the extension name is not necessarily exactly the same as the <code>pip</code> package name. Napoleon for example was, <code>sphinxcontrib.napoleon</code> and <code>sphinxcontrib-napoleon</code>, respectively.&#160;<a href="#fnref-841-4">&#8617;</a>
+</li>
+<li id="fn-841-6">
+<strong>Update</strong> I&#8217;m told that this could be because I said yes to the first option of <code>sphinx-quickstart</code> on whether to separate <code>source</code> and <code>build</code>, meaning I need to use the <code>source</code> directory for <code>apidoc</code>.[^5]&#160;<a href="#fnref-841-6">&#8617;</a>
+</li>
+</ol>
+</div>
+</div>
+                
+                        <div class="tag-well"><span><span class="fa fa-tags"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/tag/autodoc/" rel="tag">autodoc</a>,&nbsp; <a href="https://samnicholls.net/tag/config/" rel="tag">config</a>,&nbsp; <a href="https://samnicholls.net/tag/docstring/" rel="tag">docstring</a>,&nbsp; <a href="https://samnicholls.net/tag/documentation/" rel="tag">documentation</a>,&nbsp; <a href="https://samnicholls.net/tag/napoleon/" rel="tag">napoleon</a>,&nbsp; <a href="https://samnicholls.net/tag/numpy/" rel="tag">numpy</a>,&nbsp; <a href="https://samnicholls.net/tag/py-modindex/" rel="tag">py-modindex</a>,&nbsp; <a href="https://samnicholls.net/tag/python/" rel="tag">python</a>,&nbsp; <a href="https://samnicholls.net/tag/readthedocs/" rel="tag">readthedocs</a>,&nbsp; <a href="https://samnicholls.net/tag/sphinx/" rel="tag">sphinx</a>,&nbsp; <a href="https://samnicholls.net/tag/sphinx-autodoc/" rel="tag">sphinx-autodoc</a>,&nbsp; <a href="https://samnicholls.net/tag/sphinx-napoleon/" rel="tag">sphinx-napoleon</a>,&nbsp; <a href="https://samnicholls.net/tag/theme/" rel="tag">theme</a></span></div>
+                
+                <nav class="further-reading">
+	<div class="previous">
+		<span>Previous Post</span>
+		<a href="https://samnicholls.net/2016/06/12/status-may16/">Status Report: May 2016 (Metahaplomes: The graph that isn&#8217;t)</a>
+	</div>
+	<div class="next">
+		<span>Next Post</span>
+		<a href="https://samnicholls.net/2016/06/21/pcr-protocol/">A pretend biologist&#8217;s guide to running a PCR (polymerase chain reaction)</a>
+	</div>
+</nav>            </article>
+                                <div class="card">
+
+<div id="disqus_thread"></div>
+                </div>
+    
+</section>
+
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar-container">
+		            <div id="widget-area" class="widget-area" role="complementary">
+                <div id="custom_html-3" class="widget_text card widget widget_custom_html"><div class="textwidget custom-html-widget"><img src="https://pbs.twimg.com/profile_images/1044255545610436609/wt33ZbtU_400x400.jpg" height=120 style="margin-top: 20px; margin-right:10px; float: left;" alt="Sam Nicholls" />
+<div style="padding-top:15px; line-height: normal"><b style="font-size: 1.2em">Sam Nicholls</b><br><span style="font-size: 0.9em;">Haplotype Wrangler at University of Birmingham.<br>I tell computers to do things, then I write about how it all went wrong.</span></div></div></div><div id="search-2" class="card widget widget_search"><form style="margin-top:15px" action="https://samnicholls.net/" id="searchform" method="get" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" name="s" id="s" placeholder="e.g. Search...">
+    </div>
+</form>
+</div><div id="twitter_timeline-5" class="card widget widget_twitter_timeline"><a class="twitter-timeline" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/samstudio8">My Tweets</a></div><div id="categories-5" class="card widget widget_categories"><h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://samnicholls.net/category/bioinf/">Bioinformatics</a>
+<ul class='children'>
+	<li class="cat-item cat-item-8"><a href="https://samnicholls.net/category/bioinf/au-phd/">AU-PhD</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://samnicholls.net/category/bioinf/sanger-qc/" title="Sanger QC Project">Sanger-QC</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="https://samnicholls.net/category/bioinf/tools/">Tools</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-185"><a href="https://samnicholls.net/category/bioinf/tools/chitin/">chitin</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-80"><a href="https://samnicholls.net/category/devops/">Devops</a>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://samnicholls.net/category/event/">Event</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://samnicholls.net/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-176"><a href="https://samnicholls.net/category/hardware/">Hardware</a>
+<ul class='children'>
+	<li class="cat-item cat-item-223"><a href="https://samnicholls.net/category/hardware/beehive-monitor/">Beehive Monitor</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="https://samnicholls.net/category/hardware/esp8266/">ESP8266</a>
+</li>
+	<li class="cat-item cat-item-236"><a href="https://samnicholls.net/category/hardware/lego-sequencer/">Lego Sequencer</a>
+</li>
+	<li class="cat-item cat-item-177"><a href="https://samnicholls.net/category/hardware/lightstick/">Lightstick</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-151"><a href="https://samnicholls.net/category/lab/">Lab</a>
+<ul class='children'>
+	<li class="cat-item cat-item-150"><a href="https://samnicholls.net/category/lab/protocol-guides/">Protocol Guides</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://samnicholls.net/category/meta/">Meta</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="https://samnicholls.net/category/mysteries/">Mysteries</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://samnicholls.net/category/personal/">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://samnicholls.net/category/photo/">Photography</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="https://samnicholls.net/category/programming/">Programming</a>
+<ul class='children'>
+	<li class="cat-item cat-item-145"><a href="https://samnicholls.net/category/programming/documentation/">Documentation</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="https://samnicholls.net/category/programming/python/">Python</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-48"><a href="https://samnicholls.net/category/status-report/">Status Report</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="https://samnicholls.net/category/sysadm/">System Administration</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://samnicholls.net/category/uncategorised/">Uncategorised</a>
+</li>
+			</ul>
+
+			</div>            </div>
+		        </aside>
+    </div>
+
+</div> <!-- /container -->
+
+<footer id="main-footer" class="bg-primary">
+	<div id="footer-widgets" class="container">
+		    </div>
+</footer>
+
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/comment-reply.min.js?ver=5.7.5' id='comment-reply-js'></script>
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"samposium-blog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17' id='disqus_count-js'></script>
+<script type='text/javascript' id='disqus_embed-js-extra'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"841 https:\/\/samnicholls.net\/?p=841","disqusShortname":"samposium-blog","disqusTitle":"An idiot\u2019s guide to Python documentation with Sphinx and ReadTheDocs","disqusUrl":"https:\/\/samnicholls.net\/2016\/06\/15\/how-to-sphinx-readthedocs\/","postId":"841"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17' id='disqus_embed-js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202335' id='devicepx-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/jetpack/_inc/twitter-timeline.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/wp-embed.min.js?ver=5.7.5' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202335.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.9',blog:'101350222',post:'841',tz:'1',srv:'samnicholls.net'} ]);
+	_stq.push([ 'clickTrackerInit', '101350222', '841' ]);
+</script>
+
+<script type="text/javascript">
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+
+var collapsed = false;
+jQuery( document ).ready(function($) {
+    $('.navbar-toggle').click(function(){
+        console.log(collapsed);
+        if(collapsed) {
+            $('.navbar-header > button').html('<i class="fa fa-bars"></i>');
+        } else {
+            $('.navbar-header > button').html('<i class="fa fa-times"></i>');
+        }
+        $('.navbar-collapse').toggle(200);
+        collapsed = !collapsed;
+    });
+});
+</script>
+	
+</body>
+
+</html>

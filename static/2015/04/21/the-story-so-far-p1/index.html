@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://samnicholls.net/xmlrpc.php">
+
+	
+	<title>The Story so Far: Part I, A Toy Dataset &#8211; Samposium</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Feed" href="https://samnicholls.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Comments Feed" href="https://samnicholls.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; The Story so Far: Part I, A Toy Dataset Comments Feed" href="https://samnicholls.net/2015/04/21/the-story-so-far-p1/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/samnicholls.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.5"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://samnicholls.net/wp-includes/css/dist/block-library/style.min.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slabo-css'  href='//fonts.googleapis.com/css?family=Slabo+27px&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fa-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/font-awesome.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='rd-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-custom-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/custom.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://samnicholls.net/wp-content/plugins/jetpack/css/jetpack.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/samnicholls.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/fd-footnotes/fdfootnotes.js?ver=1.34' id='fdfootnote_script-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/bootstrap.js?ver=5.7.5' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/custom.js?ver=5.7.5' id='js-custom-js'></script>
+<link rel="https://api.w.org/" href="https://samnicholls.net/wp-json/" /><link rel="alternate" type="application/json" href="https://samnicholls.net/wp-json/wp/v2/posts/126" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://samnicholls.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://samnicholls.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.5" />
+<link rel="canonical" href="https://samnicholls.net/2015/04/21/the-story-so-far-p1/" />
+<link rel='shortlink' href='https://wp.me/p6RfP0-22' />
+<link rel="alternate" type="application/json+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2015%2F04%2F21%2Fthe-story-so-far-p1%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2015%2F04%2F21%2Fthe-story-so-far-p1%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62206786-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The Story so Far: Part I, A Toy Dataset" />
+<meta property="og:url" content="https://samnicholls.net/2015/04/21/the-story-so-far-p1/" />
+<meta property="og:description" content="In this somewhat long and long overdue post; I&#8217;ll attempt to explain the work done so far and an overview of the many issues encountered along the way and an insight in to why doing science i…" />
+<meta property="article:published_time" content="2015-04-21T11:00:23+00:00" />
+<meta property="article:modified_time" content="2015-10-26T11:31:20+00:00" />
+<meta property="og:site_name" content="Samposium" />
+<meta property="og:image" content="http://samnicholls.net/wp-content/uploads/2015/04/pbq2-300x225.png" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary" />
+</head>
+
+<body class="post-template-default single single-post postid-126 single-format-standard">
+
+
+        
+<header id="main-header">
+    <nav class="navbar-default navbar-static-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rd-collapse">
+                    <span class="fa fa-bars"></span>
+                    <span class="sr-only screen-reader-text">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href=" https://samnicholls.net/">Samposium</a>            </div>
+            
+            <div id="rd-collapse" class="collapse navbar-collapse">
+            
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body class="post-template-default single single-post postid-126 single-format-standard">
+
+<div id="main-menu" class="navbar-nav nav"><ul>
+<li class="page_item page-item-8"><a href="https://samnicholls.net/about/">About Me</a></li>
+<li class="page_item page-item-11"><a href="https://samnicholls.net/talks/">Talks</a></li>
+<li class="page_item page-item-15"><a href="https://samnicholls.net/things-i-have-learned/">Things I Have Learned</a></li>
+</ul></div></body></html>
+        </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="row"><!-- Content -->
+<section class="col-md-8 content-container">
+                          <article class="card post hentry post-126 type-post status-publish format-standard category-au-phd tag-fastq tag-fastqc tag-introduction tag-limpet tag-quality-control" id="post-126">
+                <header class="entry-header">
+                        <h1 class="entry-title">The Story so Far: Part I, A Toy Dataset</h1>                </header><!-- .entry-header -->
+
+                <div class="meta-well">
+                    <span style="margin-right:15px;" class=""><span class="fa fa-user"></span>&nbsp;&nbsp;&nbsp;<span class="author vcard"><a class="url fn n" href="https://samnicholls.net/about/">Sam Nicholls</a></span></span>
+
+                    <span style="margin-right:15px;" class="entry-date published updated post-date"><span class="fa fa-clock-o"></span>&nbsp;&nbsp; <time class="entry-date published" datetime="2015-04-21T12:00:23+01:00">21st April 2015</time><time class="updated" datetime="2015-10-26T11:31:20+00:00">26th October 2015</time></span>                    <span style="margin-right:15px;" class=""><span class="fa fa-comments-o"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/2015/04/21/the-story-so-far-p1/#respond"><span class="dsq-postid" data-dsqidentifier="126 http://blog.ironowl.io/?p=126">No Comments yet</span></a></span>
+                    <span class=""><span class="fa fa-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="https://samnicholls.net/category/bioinf/au-phd/" rel="category tag">AU-PhD</a></span>
+                </div>
+
+                <div class="entry-content"><p>In this somewhat <strong>long</strong> and long overdue post; I&#8217;ll attempt to explain the work done so far and an overview of the many issues encountered along the way and an insight in to why doing science is much harder than it ought to be.</p>
+<p class="message">
+This post got a little longer than anticipated, so I&#8217;ve sharded it like everything else around here.
+</p>
+<hr />
+<h1>In the beginning&#8230;</h1>
+<p>To address my lack of experience in handling metagenomic data, I was given a small<sup id="fnref-126-1"><a href="#fn-126-1" rel="footnote">1</a></sup> dataset to play with. Immediately I had to adjust my interpretation of what constitutes a &#8220;small&#8221; file. Previously the largest single input I&#8217;ve had to work with would probably have been the human reference genome (<a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/human/">GRCh37</a>) which as a FASTA<sup id="fnref-126-2"><a href="#fn-126-2" rel="footnote">2</a></sup> file clocks in at around a little over 3GB<sup id="fnref-126-3"><a href="#fn-126-3" rel="footnote">3</a></sup>.</p>
+<p>Thus imagine my dismay when I am directed to the directory of my input data and find 2x<strong>42GB</strong> file.<br />
+Together, the files are 28x the size of the largest file I&#8217;ve ever worked with&#8230;</p>
+<h2>So, what is it?</h2>
+<p>Size aside, <strong>what</strong> are we even looking at and how is there so much of it?</p>
+<p>The files represent approximately 195 million read pairs from a nextgen<sup id="fnref-126-4"><a href="#fn-126-4" rel="footnote">4</a></sup> sequencing run, with each file holding each half of the pair in the FASTQ format. The dataset is from a previous IBERS PhD student and was introduced in a 2014 paper titled <a href="http://www.ncbi.nlm.nih.gov/pubmed/25334059">Metaphylogenomic and potential functionality of the limpet Patella pellucida&#8217;s gastrointestinal tract microbiome [PubMed]</a>. According to the paper over 100 Blue-rayed Limpets (<em>Patella pellucida</em>) were collected from the shore of Aberystwyth and placed in to tanks to graze on Oarweed (<em>Laminaria digitata</em>) for one month. 60 were plated, anesthetized and aseptically dissected; vortexing and homogenizing the extracted digestion tracts before repeated filtering and final centrifugation to concentrate cells as a pellet. The pellets were then resuspended and DNA was extracted with a soil kit to create an Illumina paired-end library.</p>
+<p>The paper describes the post-sequencing data handling briefly: the net result of 398 million reads were quality processed using <code>fastq-mcf</code>; to remove adaptor sequences, reads with quality lower than Q20 and reads shorter than 31bp. The first 15bp of each read were also truncated<sup id="fnref-126-5"><a href="#fn-126-5" rel="footnote">5</a></sup>. It was noted the remaining 391 million reads were heavily contaminated with host-derived sequences and thus insufficient for functional analysis.</p>
+<p>My job was to investigate to what extent the contamination had occurred and to investigate whether any non-limpet reads could be salvaged for functional analysis.</p>
+<p>Let&#8217;s take a closer look at the format to see what we&#8217;re dealing with.</p>
+<h3>FASTQ Format</h3>
+<p>FASTQ is another text based file format, similar to FASTA but also stores quality scores for each nucleotide in a sequence. Headers are demarcated by the <code>@</code> character instead of <code>&gt;</code> and although not required tend to be formatted strings containing information pertaining to the sequencing device that produced the read. Sequence data is followed by a single <code>+</code> on a new line, before a string of quality scores (encoded as ASCII characters within a certain range, depending on the quality schema used) follows on another new line:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff6d492121968" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+@BEEPBOOP-SEQUENCER:RUN:CELL:LANE:TILE:X:Y 1:FILTERED:CONTROL:INDEX
+HELLOIAMASEQUENCEMAKEMEINTOAPROTEINPLEASES
++
+!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJ
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff6d492121968-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff6d492121968-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff6d492121968-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff6d492121968-4">4</div><div class="crayon-num" data-line="crayon-64f10616dff6d492121968-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff6d492121968-1"><span class="crayon-sy">@</span><span class="crayon-v">BEEPBOOP</span><span class="crayon-o">-</span><span class="crayon-v">SEQUENCER</span><span class="crayon-o">:</span><span class="crayon-v">RUN</span><span class="crayon-o">:</span><span class="crayon-v">CELL</span><span class="crayon-o">:</span><span class="crayon-v">LANE</span><span class="crayon-o">:</span><span class="crayon-v">TILE</span><span class="crayon-o">:</span><span class="crayon-v">X</span><span class="crayon-o">:</span><span class="crayon-i">Y</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-o">:</span><span class="crayon-v">FILTERED</span><span class="crayon-o">:</span><span class="crayon-v">CONTROL</span><span class="crayon-o">:</span><span class="crayon-e">INDEX</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff6d492121968-2"><span class="crayon-v">HELLOIAMASEQUENCEMAKEMEINTOAPROTEINPLEASES</span></div><div class="crayon-line" id="crayon-64f10616dff6d492121968-3"><span class="crayon-o">+</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff6d492121968-4"><span class="crayon-o">!</span>"<span class="crayon-p">#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJ</span></div><div class="crayon-line" id="crayon-64f10616dff6d492121968-5">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>This example uses Illumina 1.8+ sequence identifiers and quality scores, the same as those found in the dataset. The quality string represents increasing quality from 0 (worst) to 41 (best) left to right. Taking the first read from the first file as an actual example, we get a better look at a &#8220;real-world&#8221; sequence header:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff74755040843" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+@HWI-D00173:21:D22FBACXX:5:1101:1806:1986 1:N:0:CTCTCT
+TTGTGTCAAAACCGAACAACATGACAATCTTACTTGCCTGGCCCTCCGTCCTGCACTTCTGGCATGGGGAAACCACACTGGGGGC
++
+IIIAEGIIIFIIIEGIFFIIIFIFIIEFIIIIEFIIEFGCDEFFFFABDDCCCCCBBBBBBBBBBBBBB?BBBB@B?BBBBBBB5
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff74755040843-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff74755040843-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff74755040843-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff74755040843-4">4</div><div class="crayon-num" data-line="crayon-64f10616dff74755040843-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff74755040843-1"><span class="crayon-sy">@</span><span class="crayon-v">HWI</span><span class="crayon-o">-</span><span class="crayon-v">D00173</span><span class="crayon-o">:</span><span class="crayon-cn">21</span><span class="crayon-o">:</span><span class="crayon-v">D22FBACXX</span><span class="crayon-o">:</span><span class="crayon-cn">5</span><span class="crayon-o">:</span><span class="crayon-cn">1101</span><span class="crayon-o">:</span><span class="crayon-cn">1806</span><span class="crayon-o">:</span><span class="crayon-cn">1986</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-o">:</span><span class="crayon-v">N</span><span class="crayon-o">:</span><span class="crayon-cn">0</span><span class="crayon-o">:</span><span class="crayon-e">CTCTCT</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff74755040843-2"><span class="crayon-v">TTGTGTCAAAACCGAACAACATGACAATCTTACTTGCCTGGCCCTCCGTCCTGCACTTCTGGCATGGGGAAACCACACTGGGGGC</span></div><div class="crayon-line" id="crayon-64f10616dff74755040843-3"><span class="crayon-o">+</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff74755040843-4"><span class="crayon-v">IIIAEGIIIFIIIEGIFFIIIFIFIIEFIIIIEFIIEFGCDEFFFFABDDCCCCCBBBBBBBBBBBBBB</span><span class="crayon-sy">?</span><span class="crayon-v">BBBB</span><span class="crayon-sy">@</span><span class="crayon-v">B</span><span class="crayon-sy">?</span><span class="crayon-i">BBBBBBB5</span></div><div class="crayon-line" id="crayon-64f10616dff74755040843-5">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>So how are these files so large<sup id="fnref-126-6"><a href="#fn-126-6" rel="footnote">6</a></sup>? Given each read record takes four lines (assuming reads short enough to not be spead over multiple lines &#8212; which they are not in our case) and each file contains around 195 million reads, we&#8217;re looking at 780 million lines. Per file.</p>
+<p>The maximum sequence size was 86bp and each base takes one byte to store, as well as corresponding per-base quality information:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff77100584806" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+86 * 2 * 195000000
+&gt; 33540000000B == 33.54GB
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff77100584806-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff77100584806-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff77100584806-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff77100584806-1"><span class="crayon-cn">86</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">195000000</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff77100584806-2"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-cn">33540000000B</span><span class="crayon-h"> </span><span class="crayon-o">==</span><span class="crayon-h"> </span><span class="crayon-cn">33.54GB</span></div><div class="crayon-line" id="crayon-64f10616dff77100584806-3">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>Allowing some arbitrary number of bytes for headers and the <code>+</code> characters:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff79036381329" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+((86 * 2) + 50 + 1) * 195000000
+&gt; 43485000000B == 43.49GB
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff79036381329-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff79036381329-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff79036381329-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff79036381329-1"><span class="crayon-sy">(</span><span class="crayon-sy">(</span><span class="crayon-cn">86</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">2</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-h"> </span><span class="crayon-cn">50</span><span class="crayon-h"> </span><span class="crayon-o">+</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-o">*</span><span class="crayon-h"> </span><span class="crayon-cn">195000000</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff79036381329-2"><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-cn">43485000000B</span><span class="crayon-h"> </span><span class="crayon-o">==</span><span class="crayon-h"> </span><span class="crayon-cn">43.49GB</span></div><div class="crayon-line" id="crayon-64f10616dff79036381329-3">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>It just adds up. To be exact, both input files span 781,860,356 lines each &#8212; meaning around 781MB of storage is used merely for newlines alone! It takes <code>wc</code> 90 seconds to just count lines, these files aren&#8217;t small at all!</p>
+<h2>Quality Control</h2>
+<p>Although already done (as described by the paper), it&#8217;s good to get an idea of how to run and interpret basic quality checks on the input data. I used <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><code>FASTQC</code></a> which outputs some nice HTML reports that can be archived somewhere if you are nice and organised.</p>
+<p class="message">
+<b>Top Tip</b><br /> It&#8217;s good to be nice and organised because in writing this blog post I&#8217;ve been able to quickly retreive the FASTQC reports from October and realised I missed a glaring problem as well as a metric that could have saved me from wasting time.
+</p>
+<blockquote><p>
+Shit happens. Well, it&#8217;s good you&#8217;re checking, I&#8217;m much less organised.</p>
+<footer>
+— Francesco
+</p></blockquote>
+<p>For an input FASTQ file, FASTQC generate a summary metrics table. I&#8217;ve joined the two tables generated for my datasets below.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Value (_1)</th>
+<th>Value (_2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filename</td>
+<td>A3limpetMetaCleaned_1.fastq.trim</td>
+<td>A3limpetMetaCleaned_2.fastq.trim</td>
+</tr>
+<tr>
+<td>File type</td>
+<td>Conventional base calls</td>
+<td>Conventional base calls</td>
+</tr>
+<tr>
+<td>Encoding</td>
+<td>Sanger / Illumina 1.9</td>
+<td>Sanger / Illumina 1.9</td>
+</tr>
+<tr>
+<td>Total Sequences</td>
+<td>195465089</td>
+<td>195465089</td>
+</tr>
+<tr>
+<td>Filtered Sequences</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Sequence length</td>
+<td>4-86</td>
+<td>16-86</td>
+</tr>
+<tr>
+<td>%GC</td>
+<td>37</td>
+<td>37</td>
+</tr>
+</tbody>
+</table>
+<p>Here I managed to miss two things:</p>
+<ul>
+<li>Both files store the same number of sequences (which is expected as the sequences are paired), something that I apparently forget about shortly&#8230;</li>
+<li>Both files do not contain sequences of uniform length, neither do the non-uniform lengths have the same range, meaning that some pairs will not align to correctly as they cannot overlap fully&#8230;</li>
+</ul>
+<p>FASTQC also generates some nice graphs, of primary interest, per-base sequence quality over the length of a read:</p>
+<table>
+<thead>
+<tr>
+<th align="center">A3limpetMetaCleaned_1.fastq.trim</th>
+<th align="center">A3limpetMetaCleaned_2.fastq.trim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="http://samnicholls.net/wp-content/uploads/2015/04/pbq1.png"><img loading="lazy" class="alignnone size-medium wp-image-286" src="http://samnicholls.net/wp-content/uploads/2015/04/pbq1-300x225.png" alt="pbq1" width="300" height="225" srcset="https://samnicholls.net/wp-content/uploads/2015/04/pbq1-300x225.png 300w, https://samnicholls.net/wp-content/uploads/2015/04/pbq1.png 800w" sizes="(max-width: 300px) 100vw, 300px" /></a></td>
+<td align="center"><a href="http://samnicholls.net/wp-content/uploads/2015/04/pbq2.png"><img loading="lazy" class="alignnone size-medium wp-image-287" src="http://samnicholls.net/wp-content/uploads/2015/04/pbq2-300x225.png" alt="pbq2" width="300" height="225" srcset="https://samnicholls.net/wp-content/uploads/2015/04/pbq2-300x225.png 300w, https://samnicholls.net/wp-content/uploads/2015/04/pbq2.png 800w" sizes="(max-width: 300px) 100vw, 300px" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Although made small to fit, both box plots clearly demonstrate that average base quality (blue line) lives well within the &#8220;green zone&#8221; (binning scores of 28+) slowly declining to a low of around Q34. This is a decent result, although not surprising considering quality filtering has already been performed on the dataset to remove poor quality reads! A nice sanity check nonetheless. I should add that it is both normal and expected for average per-base quality to fall over the length of a read (though this can be problematic if the quality falls drastically) by virtue of the unstable chemistry involved in sequencing.</p>
+<p>FASTQC can plot a distribution of GC content against a hypothetical normal distribution, this is useful for genomic sequencing where one would expect such a distribution. However a metagenomic sample will (should) contain many species that may have differing distributions of GC content across their invididual genomes. FASTQC will often raise a warning about the distribution of GC content for such metagenomic samples given a statistically significant deviation from or violation of the theoretical normal. These can be ignored.</p>
+<p>Two other tests also typically attract warnings or errors; K-mer content and sequence duplication levels. These tests attempt to quantify the diversity of the reads at hand, which is great when you are looking for diversity within reads of one genome; raising a flag if perhaps you&#8217;ve accidentally sequenced all your barcodes or done too many rounds of PCR and been left with a lot of similar looking fragments. But once again, metagenomics violates expectations and assumptions made by traditional single-species genomics. For example, highly represented species ([and|or] fragments that do well under PCR) will dominate samples and trigger apparently high levels of sequence duplication. Especially so if many species share many similar sequences which is likely in environments undergoing co-evolution.</p>
+<p>FASTQC also plots N count (no call), GC ratio and average quality scores across whole reads as well as per-base sequence content (which should be checked for a roughly linear stability) and distribution of sequence lengths (which should be checked to ensure the majority of sequences are a reasonable size). Together a quick look at all these metrics should provide a decent health check before moving forward, but they too should be taken with a pinch of salt as FASTQC tries to help you answer the question &#8220;are these probably from one genome?&#8221;.</p>
+<h2>Trimming</h2>
+<p>Trimming is the process of truncating bases that fall below a particular quality threshold at the start and end of reads. Typically this is done to create &#8220;better&#8221; read overlaps (as potential low-quality base calls could otherwise prevent overlaps that should exist) which can help improve performance of downstream tools such as assemblers and aligners.</p>
+<p>Trimming had already been completed by the time I had got hold of the dataset<sup id="fnref-126-7"><a href="#fn-126-7" rel="footnote">7</a></sup>, but I wanted to perform a quick sanity check and ensure that the two files had been handled correctly<sup id="fnref-126-8"><a href="#fn-126-8" rel="footnote">8</a></sup>. Blatantly forgetting about and ignoring the FASTQC reports I had generated and checked over, I queried both files with <code>grep</code>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff7c840565371" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+grep -c '^@' $FILE
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff7c840565371-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff7c840565371-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff7c840565371-1"><span class="crayon-v">grep</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">c</span><span class="crayon-h"> </span><span class="crayon-s">'^@'</span><span class="crayon-h"> </span><span class="crayon-sy">$</span><span class="crayon-i">FILE</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff7c840565371-2">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff7f908302392" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+196517718   A3limpetMetaCleaned_1.fastq.trim
+196795722   A3limpetMetaCleaned_2.fastq.trim
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff7f908302392-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff7f908302392-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff7f908302392-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff7f908302392-1"><span class="crayon-cn">196517718</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-v">A3limpetMetaCleaned_1</span><span class="crayon-sy">.</span><span class="crayon-v">fastq</span><span class="crayon-sy">.</span><span class="crayon-i">trim</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff7f908302392-2"><span class="crayon-cn">196795722</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-v">A3limpetMetaCleaned_2</span><span class="crayon-sy">.</span><span class="crayon-v">fastq</span><span class="crayon-sy">.</span><span class="crayon-i">trim</span></div><div class="crayon-line" id="crayon-64f10616dff7f908302392-3">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>&#8220;Oh dear&#8221;<sup id="fnref-126-9"><a href="#fn-126-9" rel="footnote">9</a></sup>, I thought. The number of sequences in both files are not equal. &#8220;Somebody bumbled the trimming!&#8221;. I hypothesised that low-quality sequences had been removed but the corresponding mate in the other file had not been removed to keep the pairs in sync.</p>
+<p>With hindsight, let&#8217;s take another look at the valid range of quality score characters for the Illumina 1.8+ format:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff81730033929" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+!"#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJ
+^                              ^         ^
+0..............................31........41
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff81730033929-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff81730033929-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff81730033929-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff81730033929-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff81730033929-1"><span class="crayon-o">!</span>"<span class="crayon-p">#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJ</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff81730033929-2"><span class="crayon-o">^</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">^</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-o">^</span></div><div class="crayon-line" id="crayon-64f10616dff81730033929-3"><span class="crayon-cn">0..............................31........41</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff81730033929-4">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>The record delimiting character; <code>@</code> is used to encode Q31. For some reason somebody thought it would be a great idea to make this character available for use in quality strings. I&#8217;d been counting records as well as any quality line that happened to begin with an encoded score of Q31, the <code>@</code>.</p>
+<blockquote class="twitter-tweet" lang="en">
+<p><a href="https://twitter.com/samstudio8">@samstudio8</a> One of many sins in FASTQ story. They could have used tilde at top of ASCII range or something… see also <a href="http://t.co/x2Jz2owODp">http://t.co/x2Jz2owODp</a></p>
+<p>— Peter Cock (@pjacock) <a href="https://twitter.com/pjacock/status/551598001215385600">January 4, 2015</a>
+</p></blockquote>
+<p><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br />
+And so, I unnecessarily launched myself head first in to my first large scale computing problem; given two sets of ~196 million reads which mostly overlap, how can we efficiently find the intersection (and write it to disk)?</p>
+<hr />
+<h1>tl;dr</h1>
+<ul>
+<li>In bioinformatics, &#8220;small&#8221; really isn&#8217;t <em>small</em>.</li>
+<li>Try to actually read quality reports, then read them again. Then grab a coffee or go outside and come back and read them for a third time before you do something foolish and have to tell everyone at your lab meeting about how silly you are.</li>
+<li>Don&#8217;t count the number of sequences in a FASTQ file by counting <code>@</code> characters at the start of a line, it&#8217;s a valid quality score for most quality encoding formats.</li>
+</ul>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-126-1">
+Now realised to be a complete misnomer, both in terms of size and effort.&#160;<a href="#fnref-126-1" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-126-2">
+A text based file format where sequences are delimited by <code>&gt;</code> and a sequence name [and|or] description, followed by any number of lines containing nucleotides or amino acids (or in reality, whatever you fancy):</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f10616dff83817781866" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&gt;Example Sequence Hoot Factor 9 | 00000001
+HELLOIAMASEQUENCE
+BEEPBOOPTRANSLATE
+MEINTOPROTEINS
+&gt;Example Sequence Hoot Factor 9 | 00000002
+NNNNNNNNNNNNNNNNN
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f10616dff83817781866-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff83817781866-2">2</div><div class="crayon-num" data-line="crayon-64f10616dff83817781866-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff83817781866-4">4</div><div class="crayon-num" data-line="crayon-64f10616dff83817781866-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f10616dff83817781866-6">6</div><div class="crayon-num" data-line="crayon-64f10616dff83817781866-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f10616dff83817781866-1"><span class="crayon-o">&gt;</span><span class="crayon-e">Example </span><span class="crayon-e">Sequence </span><span class="crayon-e">Hoot </span><span class="crayon-i">Factor</span><span class="crayon-h"> </span><span class="crayon-cn">9</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-cn">00000001</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff83817781866-2"><span class="crayon-e">HELLOIAMASEQUENCE</span></div><div class="crayon-line" id="crayon-64f10616dff83817781866-3"><span class="crayon-e">BEEPBOOPTRANSLATE</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff83817781866-4"><span class="crayon-v">MEINTOPROTEINS</span></div><div class="crayon-line" id="crayon-64f10616dff83817781866-5"><span class="crayon-o">&gt;</span><span class="crayon-e">Example </span><span class="crayon-e">Sequence </span><span class="crayon-e">Hoot </span><span class="crayon-i">Factor</span><span class="crayon-h"> </span><span class="crayon-cn">9</span><span class="crayon-h"> </span><span class="crayon-o">|</span><span class="crayon-h"> </span><span class="crayon-cn">00000002</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f10616dff83817781866-6"><span class="crayon-i">NNNNNNNNNNNNNNNNN</span></div><div class="crayon-line" id="crayon-64f10616dff83817781866-7">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>Typically sequence lines are of uniform length (under 80bp), though this is not a requirement of the format. The <a href="http://www.ncbi.nlm.nih.gov/">NCBI</a> suggest formats for the header (single line descriptor, following the <code>&gt;</code> character) though these are also not required to be syntactically valid.&#160;<a href="#fnref-126-2" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-126-3">
+Stored as text we take a byte for each of the 3 billion nucleotides as well as each newline delimiter and an arbitrary number of bytes for each chromosome&#8217;s single line header.&#160;<a href="#fnref-126-3" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-126-4">
+Seriously, can we stop calling it nextgen yet?&#160;<a href="#fnref-126-4" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-126-5">
+I&#8217;m unsure why, from a recent internal talk I was under the impression we&#8217;d normally trim the first &#8220;few&#8221; bases (1-3bp, maybe up to 13bp if there&#8217;s a lot of poor quality nucleotides) to try and improve downstream analysis such as alignments (given the start and end of reads can often be quite poor and not align as well as they should) but 15bp seems excessive. It also appears the ends of the reads were not truncated.</p>
+<p class="message">
+<b>Update</b><br />It&#8217;s possible an older library prep kit was used to create the sequencing library, thus the barcodes would have needed truncating from the reads along with any poor scoring bases.</p>
+<p>The ends of the reads were not truncated as the quality falls inside a reasonable threshold.<br />
+&#160;<a href="#fnref-126-5" rev="footnote">&#8617;</a></p>
+</li>
+<li id="fn-126-6">
+Or small, depending on whether you&#8217;ve adjusted your world view yet.&#160;<a href="#fnref-126-6" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-126-7">
+I&#8217;m unsure why, from a recent internal talk I was under the impression we&#8217;d normally trim the first &#8220;few&#8221; bases (1-3bp, maybe up to 13bp if there&#8217;s a lot of poor quality nucleotides) to try and improve downstream analysis such as alignments (given the start and end of reads can often be quite poor and not align as well as they should) but 15bp seems excessive. It also appears the ends of the reads were not truncated.</p>
+<p class="message">
+<b>Update</b><br />It&#8217;s possible an older library prep kit was used to create the sequencing library, thus the barcodes would have needed truncating from the reads along with any poor scoring bases.</p>
+<p>The ends of the reads were not truncated as the quality falls inside a reasonable threshold.<br />
+&#160;<a href="#fnref-126-7" rev="footnote">&#8617;</a></p>
+</li>
+<li id="fn-126-8">
+Primarily because I don&#8217;t trust anyone. Including myself.[^me]&#160;<a href="#fnref-126-8" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-126-9">
+I&#8217;m sure you can imagine what I really said.&#160;<a href="#fnref-126-9" rev="footnote">&#8617;</a>
+</li>
+</ol>
+</div>
+</div>
+                
+                        <div class="tag-well"><span><span class="fa fa-tags"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/tag/fastq/" rel="tag">fastq</a>,&nbsp; <a href="https://samnicholls.net/tag/fastqc/" rel="tag">fastqc</a>,&nbsp; <a href="https://samnicholls.net/tag/introduction/" rel="tag">introduction</a>,&nbsp; <a href="https://samnicholls.net/tag/limpet/" rel="tag">limpet</a>,&nbsp; <a href="https://samnicholls.net/tag/quality-control/" rel="tag">quality control</a></span></div>
+                
+                <nav class="further-reading">
+	<div class="previous">
+		<span>Previous Post</span>
+		<a href="https://samnicholls.net/2015/04/17/exits/">Exit codes, core dumps, `set -e` and `expr`</a>
+	</div>
+	<div class="next">
+		<span>Next Post</span>
+		<a href="https://samnicholls.net/2015/04/24/trembling/">TrEMBLing</a>
+	</div>
+</nav>            </article>
+                                <div class="card">
+
+<div id="disqus_thread"></div>
+                </div>
+    
+</section>
+
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar-container">
+		            <div id="widget-area" class="widget-area" role="complementary">
+                <div id="custom_html-3" class="widget_text card widget widget_custom_html"><div class="textwidget custom-html-widget"><img src="https://pbs.twimg.com/profile_images/1044255545610436609/wt33ZbtU_400x400.jpg" height=120 style="margin-top: 20px; margin-right:10px; float: left;" alt="Sam Nicholls" />
+<div style="padding-top:15px; line-height: normal"><b style="font-size: 1.2em">Sam Nicholls</b><br><span style="font-size: 0.9em;">Haplotype Wrangler at University of Birmingham.<br>I tell computers to do things, then I write about how it all went wrong.</span></div></div></div><div id="search-2" class="card widget widget_search"><form style="margin-top:15px" action="https://samnicholls.net/" id="searchform" method="get" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" name="s" id="s" placeholder="e.g. Search...">
+    </div>
+</form>
+</div><div id="twitter_timeline-5" class="card widget widget_twitter_timeline"><a class="twitter-timeline" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/samstudio8">My Tweets</a></div><div id="categories-5" class="card widget widget_categories"><h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://samnicholls.net/category/bioinf/">Bioinformatics</a>
+<ul class='children'>
+	<li class="cat-item cat-item-8"><a href="https://samnicholls.net/category/bioinf/au-phd/">AU-PhD</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://samnicholls.net/category/bioinf/sanger-qc/" title="Sanger QC Project">Sanger-QC</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="https://samnicholls.net/category/bioinf/tools/">Tools</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-185"><a href="https://samnicholls.net/category/bioinf/tools/chitin/">chitin</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-80"><a href="https://samnicholls.net/category/devops/">Devops</a>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://samnicholls.net/category/event/">Event</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://samnicholls.net/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-176"><a href="https://samnicholls.net/category/hardware/">Hardware</a>
+<ul class='children'>
+	<li class="cat-item cat-item-223"><a href="https://samnicholls.net/category/hardware/beehive-monitor/">Beehive Monitor</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="https://samnicholls.net/category/hardware/esp8266/">ESP8266</a>
+</li>
+	<li class="cat-item cat-item-236"><a href="https://samnicholls.net/category/hardware/lego-sequencer/">Lego Sequencer</a>
+</li>
+	<li class="cat-item cat-item-177"><a href="https://samnicholls.net/category/hardware/lightstick/">Lightstick</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-151"><a href="https://samnicholls.net/category/lab/">Lab</a>
+<ul class='children'>
+	<li class="cat-item cat-item-150"><a href="https://samnicholls.net/category/lab/protocol-guides/">Protocol Guides</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://samnicholls.net/category/meta/">Meta</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="https://samnicholls.net/category/mysteries/">Mysteries</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://samnicholls.net/category/personal/">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://samnicholls.net/category/photo/">Photography</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="https://samnicholls.net/category/programming/">Programming</a>
+<ul class='children'>
+	<li class="cat-item cat-item-145"><a href="https://samnicholls.net/category/programming/documentation/">Documentation</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="https://samnicholls.net/category/programming/python/">Python</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-48"><a href="https://samnicholls.net/category/status-report/">Status Report</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="https://samnicholls.net/category/sysadm/">System Administration</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://samnicholls.net/category/uncategorised/">Uncategorised</a>
+</li>
+			</ul>
+
+			</div>            </div>
+		        </aside>
+    </div>
+
+</div> <!-- /container -->
+
+<footer id="main-footer" class="bg-primary">
+	<div id="footer-widgets" class="container">
+		    </div>
+</footer>
+
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/comment-reply.min.js?ver=5.7.5' id='comment-reply-js'></script>
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"samposium-blog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17' id='disqus_count-js'></script>
+<script type='text/javascript' id='disqus_embed-js-extra'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"126 http:\/\/blog.ironowl.io\/?p=126","disqusShortname":"samposium-blog","disqusTitle":"The Story so Far: Part I, A Toy Dataset","disqusUrl":"https:\/\/samnicholls.net\/2015\/04\/21\/the-story-so-far-p1\/","postId":"126"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17' id='disqus_embed-js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202335' id='devicepx-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/jetpack/_inc/twitter-timeline.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/wp-embed.min.js?ver=5.7.5' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202335.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.9',blog:'101350222',post:'126',tz:'1',srv:'samnicholls.net'} ]);
+	_stq.push([ 'clickTrackerInit', '101350222', '126' ]);
+</script>
+
+<script type="text/javascript">
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+
+var collapsed = false;
+jQuery( document ).ready(function($) {
+    $('.navbar-toggle').click(function(){
+        console.log(collapsed);
+        if(collapsed) {
+            $('.navbar-header > button').html('<i class="fa fa-bars"></i>');
+        } else {
+            $('.navbar-header > button').html('<i class="fa fa-times"></i>');
+        }
+        $('.navbar-collapse').toggle(200);
+        collapsed = !collapsed;
+    });
+});
+</script>
+	
+</body>
+
+</html>

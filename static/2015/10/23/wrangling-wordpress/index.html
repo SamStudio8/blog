@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://samnicholls.net/xmlrpc.php">
+
+	
+	<title>Wrangling WordPress &#8211; Samposium</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Feed" href="https://samnicholls.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Comments Feed" href="https://samnicholls.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Wrangling WordPress Comments Feed" href="https://samnicholls.net/2015/10/23/wrangling-wordpress/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/samnicholls.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.5"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://samnicholls.net/wp-includes/css/dist/block-library/style.min.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slabo-css'  href='//fonts.googleapis.com/css?family=Slabo+27px&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fa-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/font-awesome.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='rd-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-custom-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/custom.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://samnicholls.net/wp-content/plugins/jetpack/css/jetpack.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/samnicholls.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/fd-footnotes/fdfootnotes.js?ver=1.34' id='fdfootnote_script-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/bootstrap.js?ver=5.7.5' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/custom.js?ver=5.7.5' id='js-custom-js'></script>
+<link rel="https://api.w.org/" href="https://samnicholls.net/wp-json/" /><link rel="alternate" type="application/json" href="https://samnicholls.net/wp-json/wp/v2/posts/54" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://samnicholls.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://samnicholls.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.5" />
+<link rel="canonical" href="https://samnicholls.net/2015/10/23/wrangling-wordpress/" />
+<link rel='shortlink' href='https://wp.me/p6RfP0-S' />
+<link rel="alternate" type="application/json+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2015%2F10%2F23%2Fwrangling-wordpress%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2015%2F10%2F23%2Fwrangling-wordpress%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62206786-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Wrangling WordPress" />
+<meta property="og:url" content="https://samnicholls.net/2015/10/23/wrangling-wordpress/" />
+<meta property="og:description" content="In my previous post, I admitted to switching back to WordPress. Here is what I learned and some of the pros and cons I&#8217;ve encountered so far." />
+<meta property="article:published_time" content="2015-10-23T09:55:49+00:00" />
+<meta property="article:modified_time" content="2015-10-28T13:54:33+00:00" />
+<meta property="og:site_name" content="Samposium" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary" />
+</head>
+
+<body class="post-template-default single single-post postid-54 single-format-standard">
+
+
+        
+<header id="main-header">
+    <nav class="navbar-default navbar-static-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rd-collapse">
+                    <span class="fa fa-bars"></span>
+                    <span class="sr-only screen-reader-text">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href=" https://samnicholls.net/">Samposium</a>            </div>
+            
+            <div id="rd-collapse" class="collapse navbar-collapse">
+            
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body class="post-template-default single single-post postid-54 single-format-standard">
+
+<div id="main-menu" class="navbar-nav nav"><ul>
+<li class="page_item page-item-8"><a href="https://samnicholls.net/about/">About Me</a></li>
+<li class="page_item page-item-11"><a href="https://samnicholls.net/talks/">Talks</a></li>
+<li class="page_item page-item-15"><a href="https://samnicholls.net/things-i-have-learned/">Things I Have Learned</a></li>
+</ul></div></body></html>
+        </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="row"><!-- Content -->
+<section class="col-md-8 content-container">
+                          <article class="card post hentry post-54 type-post status-publish format-standard category-meta tag-blog tag-installation tag-jekyll tag-migration tag-security tag-wordpress" id="post-54">
+                <header class="entry-header">
+                        <h1 class="entry-title">Wrangling WordPress</h1>                </header><!-- .entry-header -->
+
+                <div class="meta-well">
+                    <span style="margin-right:15px;" class=""><span class="fa fa-user"></span>&nbsp;&nbsp;&nbsp;<span class="author vcard"><a class="url fn n" href="https://samnicholls.net/about/">Sam Nicholls</a></span></span>
+
+                    <span style="margin-right:15px;" class="entry-date published updated post-date"><span class="fa fa-clock-o"></span>&nbsp;&nbsp; <time class="entry-date published" datetime="2015-10-23T10:55:49+01:00">23rd October 2015</time><time class="updated" datetime="2015-10-28T13:54:33+00:00">28th October 2015</time></span>                    <span style="margin-right:15px;" class=""><span class="fa fa-comments-o"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/2015/10/23/wrangling-wordpress/#comments"><span class="dsq-postid" data-dsqidentifier="54 http://blog.ironowl.io/?p=54">One Comment</span></a></span>
+                    <span class=""><span class="fa fa-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="https://samnicholls.net/category/meta/" rel="category tag">Meta</a></span>
+                </div>
+
+                <div class="entry-content"><p>In my <a href="http://blog.ironowl.io/2015/10/19/welcome-back-wordpress/">previous post</a>, I admitted to switching back to WordPress. Here is what I learned and some of the pros and cons I&#8217;ve encountered so far.</p>
+<h2>The Famous Five Minute Install</h2>
+<p>WordPress prides itself on its <a href="https://codex.wordpress.org/Installing_WordPress#Famous_5-Minute_Install">famous five minute install</a>, so I figured even if I decided to abort the migration immediately after installation, I&#8217;d not have wasted much of my time. Indeed, the steps are simple and it takes almost no time to download and unzip the source, generate some database credentials, edit the sample configuration and activate a new Apache <code>VirtualHost</code>. The longest part of the installation was impatiently waiting for the new DNS zone to propagate.</p>
+<p>Well, excluding the time it took for me to realise that the reason the domain was displaying the default <code>VirtualHost</code> was that it had been configured for <code>:443</code>, not <code>:80</code>. Oops&#8230;</p>
+<p>I followed the prompts, created a user and I was automatically logged in to my new blog. Tada! I was done.</p>
+<h2>A Brief Note on WordPress Security</h2>
+<p>One of the main reasons I&#8217;d been less inclined to install WordPress was its reputation for poor security. I can&#8217;t quantify whether this is because the code base is actually hacky or poor<sup class='footnote'><a href='#fn-54-1' id='fnref-54-1' onclick='return fdfootnote_show(54)'>1</a></sup>, or whether it is merely a victim of its own popularity and its code base is under more forensic scrutiny from would-be attackers.</p>
+<p>I suspect it&#8217;s a little of both, but end-users themselves are often to blame for the repercussions. WordPress and its plugins are frequently updated (almost annoyingly so) and yet outdated versions of WordPress litter the web, ripe for the picking. Keeping on top of these updates is a first and critical step towards maintaining security.</p>
+<p>Judging by my Apache access logs, the main threat to a WordPress installation that isn&#8217;t particularly sensitive, is automated brute forcing of administrator account logins<sup class='footnote'><a href='#fn-54-2' id='fnref-54-2' onclick='return fdfootnote_show(54)'>2</a></sup>. For some reason, in 2015, out-of-the-box WordPress has no ability to throttle or temporarily deny a user access to the <code>wp-admin</code> login page following multiple failed logins, despite this appearing to be a major attack vector.</p>
+<p>Now, when I set-up my first VPS, I found several helpful guides published by Linode. One such guide, for server security, described the <a href="https://www.linode.com/docs/security/securing-your-server#installing-and-configuring-fail2ban">installation and configuration of <b><code>fail2ban</code></b></a>, an excellent tool that monitors various system logs and drops traffic from IP addresses that appear to be acting suspiciously. Helpfully, someone has written a <a href="https://wordpress.org/plugins/wp-fail2ban/">WordPress fail2ban plugin</a> which uses the server&#8217;s <code>LOG_AUTH</code> notification mechanism to append to the system&#8217;s auth log. An additional rule (called a &#8220;jail&#8221;) is appended to <code>fail2ban.conf</code>, specifying a filter (provided by the plugin) that is responsible for parsing relevant log lines and flagging suspicious behaviour &#8211; in this case, failed login attempts, triggering a ban.</p>
+<p>I would imagine (and hope) for a small-fry blog like mine, where intrusion provides no real gain to an assailant other than my inconvenience (though I suppose automatically pwning any boxes you can for a bot net is desirable), that deployment of <code>fail2ban</code> in this fashion will effectively eliminate risk from the most likely sources (automated scanning tools). Indeed, in just over four days, since setting up the jail, 50 IPs have been banned for failing to enter a valid administration password. Of course, it probably helps further that my credentials were generated by a password manager and so are less likely to be guessed by brute-force anyway.</p>
+<p>IP banning aside, the WordPress Codex also has a nice article on <a href="http://codex.wordpress.org/Hardening_WordPress">hardening WordPress installations</a> which covers a few other topics, like using Apache <code>RewriteRules</code> to protect the <code>wp-includes</code> directory, ensuring correct file permissions, securing the <code>wp-config.php</code> and limiting database privileges<sup class='footnote'><a href='#fn-54-3' id='fnref-54-3' onclick='return fdfootnote_show(54)'>3</a></sup>. It also briefly name drops <a href="http://www.ossec.net/">OSSEC</a>: an open source intrusion detection system that happens to be pretty awesome.</p>
+<h2>Replicating Functionality</h2>
+<p>Equipped with a bare bones WordPress blog, complete with an example post and comment from &#8220;Mr. WordPress&#8221;, I first tasked myself to replicate the functionality provided by my GitHub pages blog. After all, if I really was going to migrate, I&#8217;d need to confirm that my new posts could be afforded like-for-like functionality with old ones.</p>
+<h4>Syntax Highlighting</h4>
+<p>At the top of my agenda was syntax highlighting. Code snippets are a vital part of sharing tips and fixes, as well as describing how exactly computations were allowed to go badly wrong. I briefly searched around for appropriate plugins before settling on <a href="https://wordpress.org/plugins/crayon-syntax-highlighter/">Crayon Syntax Highlighter</a>. Installation should have been simple, but the automatic plugin installation failed repeatedly with a vague permissions error.</p>
+<p>I spent the best part of half an hour going around in circles, altering various directory and file permissions and groups, and going so far as <code>touch</code>ing the files myself to no avail. The Apache error log provided more detail but nothing helpful:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105f41fe61066065809" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">Crayon Syntax Highlighter Install Error</span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+PHP Warning:  file_put_contents(ssh2.sftp://Resource id #167/█████████████████████████████████████████/wp-content/upgrade/crayon-syntax-highlighter/crayon-syntax-highlighter/langs/c#/statement.txt): failed to open stream: operation failed in class-wp-filesystem-ssh2.php on line 181</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105f41fe61066065809-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105f41fe61066065809-1"><span class="crayon-e">PHP </span><span class="crayon-v">Warning</span><span class="crayon-o">:</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">file_put_contents</span><span class="crayon-sy">(</span><span class="crayon-v">ssh2</span><span class="crayon-sy">.</span><span class="crayon-v">sftp</span><span class="crayon-o">:</span><span class="crayon-c">//Resource id #167/█████████████████████████████████████████/wp-content/upgrade/crayon-syntax-highlighter/crayon-syntax-highlighter/langs/c#/statement.txt): failed to open stream: operation failed in class-wp-filesystem-ssh2.php on line 181</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>After checking I was able to install other plugins, I had a hunch and looked for a bug to confirm my suspicions: I think the installation fails due to the hash symbol in the file path being interpreted as a special character. After some digging I found <a href="https://bugs.php.net/bug.php?id=59794">an old bug</a> that describes this exact issue, but was reported as fixed back in 2012. I&#8217;d wasted enough time here and at the risk of not quite solving the mystery and just getting up and running, I gave up on the automated installation and downloaded and unzipped the plugin to the necessary directory myself.</p>
+<h4>Footnotes</h4>
+<p><a href="https://wordpress.org/plugins/fd-footnotes/">FD Footnotes</a> is a clean and simple plugin for footnotes. Installation was trivial but unfortunately the syntax was not the same as used in my previous posts, which will undoubtedly add complexity for post transfer later.</p>
+<h4>Comments</h4>
+<p>I added comments to my previous blog with Disqus. This proved convenient as migration was simply a case of installing and configuring the <a href="https://wordpress.org/plugins/disqus-comment-system/">WordPress Disqus plugin</a>. As I was using a temporary URL, I appended this to the list of trusted hosts on the Disqus administration page.</p>
+<h4>Markdown Support (and more&#8230;)</h4>
+<p>I&#8217;ve become accustomed to writing with Markdown and was disappointed to find that the WordPress editor does not support it by default. A brief Google search suggested the <a href="https://wordpress.org/plugins/jetpack/">Jetpack plugin</a>; a disturbingly overpowered plugin from the same people who host <code>wordpress.com</code>. Along with Markdown support, features include; additional visitor statistics, social content sharing buttons, enhanced security, a Latex plugin (very handy), shortlinks, and a subscription system.</p>
+<h2>Duplicating Content</h2>
+<p>When I migrated <a href="https://vicharkness.co.uk/">Vic&#8217;s blog</a> from <code>wordpress.com</code>, an importer plugin made the process relatively hassle free and I was hoping to find a similar plugin for importing my Jekyll posts. I found an RSS importer that failed to work with my <code>atom.xml</code> and another plugin that could parse the website directly failed to import posts also. I turned to scripting and the best I could find was a <a href="http://tyler.io/importing-jekyll-posts-into-wordpress/">hacky looking PHP script</a> that while useful, would still need manual editing to handle images, code samples, footnotes and intra-blog links. In the end, I decided to just re-create each post manually. How hard could it be?</p>
+<p>The process was simple for my small quote and image posts but a very painful experience for my full-fledged technical posts. Copying the Markdown directly, I was surprised to find that code snippets and footnotes worked without intervention, but newline characters were incorrectly interpreted as paragraph breaks and there was a mess of ampersands, greater and less than symbols incorrectly rendered in the text as their corresponding HTML entities. I needed something more clever.</p>
+<p>I tried using <code>pandoc</code> to convert the Markdown to HTML but this destroyed code blocks by adding syntax highlighting inside of span tags. I opted to instead convert to a slightly different flavour of Markdown that appeared more acceptable to the visual editor. Posts still required a significant amount of intervention to correct mistakes in the new formatting, update images and links.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105f41fe6b409641197" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+pandoc --atx-headers --normalize -f markdown -t markdown_github+footnotes in.md &gt; out.md
+</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105f41fe6b409641197-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105f41fe6b409641197-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105f41fe6b409641197-1"><span class="crayon-v">pandoc</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">atx</span><span class="crayon-o">-</span><span class="crayon-v">headers</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">normalize</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">f</span><span class="crayon-h"> </span><span class="crayon-v">markdown</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">t</span><span class="crayon-h"> </span><span class="crayon-v">markdown_github</span><span class="crayon-o">+</span><span class="crayon-e">footnotes </span><span class="crayon-st">in</span><span class="crayon-sy">.</span><span class="crayon-v">md</span><span class="crayon-h"> </span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">out</span><span class="crayon-sy">.</span><span class="crayon-i">md</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105f41fe6b409641197-2">&nbsp;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>Errors in parsing frequently caused code snippets to appear without formatting and it took me a while to notice spurious escape characters preceding underscores, less and greater than symbols. Switching between the Visual and Text editor modes just once would mangle all indentation inside code blocks.</p>
+<p>I spent the best part of five hours converting and correcting just under 40 posts. I regret this course of action.</p>
+<h2>Initial Thoughts</h2>
+<p>Content migration aside, I&#8217;ll enumerate a few positives and negatives I&#8217;ve encountered over my first few days of use:</p>
+<h4>Likes</h4>
+<p><strong>Media insertion<br />
+</strong>As mentioned in <a href="http://blog.ironowl.io/2015/10/19/welcome-back-wordpress/">my last post</a>, embedded media was previously a pain. I almost exclusively used the Github web interface to author posts, which doesn&#8217;t currently allow for arbitrary file uploads. Uploading an image would be done on my local machine via a Github commit and I&#8217;d have to manually craft the image tags myself as necessary. The WordPress editor on the other hand has a nifty upload and image manager tool. It was also quite easy to fix broken images after importing my content.</p>
+<p><strong>Better web based visual editor</strong><br />
+Github&#8217;s web editor is handy but not intended for this purpose, the WordPress editor affords more writing-specific functionality when authoring posts.</p>
+<p><strong>Linking to previous posts</strong><br />
+Jekyll allowed for intra-blog links with a special post tag which was useful (as one doesn&#8217;t need to write the full HTML for an <code>a</code> tag), but not completely intuitive as I didn&#8217;t know the names of my previous posts off the top of my head. Here I can click the create link button and select from my post list, or provide an external URL.</p>
+<p><strong>Categories and tagging</strong><br />
+I post several different categories of information to my blog and would like to demarcate them more obviously for readers. Tags also provide a handy way to move through previous posts that cover similar topics in the same category. Whilst more than possible with Jekyll via numerous plugins, Github pages allow support a very narrow subset of the plugins available.</p>
+<p><strong>Plugins</strong><br />
+There is a whole world of WordPress plugins available for a variety of tasks. Plugins are typically quick and simple to install and configure.</p>
+<p><strong>Post preview</strong><br />
+I can preview and save posts without needing to commit half finished drafts.</p>
+<p><strong>Automatic URLs, slugs, pretty permalinks</strong><br />
+These are just a few bits and bobs that are taken care of automatically for me, making the authoring process just that little bit more streamlined.</p>
+<h4>Dislikes</h4>
+<p><strong>Tables</strong><br />
+The editor does not seem to support tables by default, I&#8217;ll have to select one of the many plugins. However, Markdown tables are correctly parsed for post display, tables are just not friendly to create and edit in the editor.</p>
+<p><strong>Plugins</strong><br />
+Plugin organisation and management leaves a lot to be desired. Searches don&#8217;t offer any sorting or filtering, and there are usually many, many plugins that achieve the same task to with varying degrees of support and success.</p>
+<p><strong>Themes and templates</strong><br />
+Editing themes is quite a frustrating endeavor, requiring edits to various PHP and CSS files. The default themes use too many <code>@media</code> CSS rules for browsers of various sizes, which I find increases the difficulty in ensuring a uniform interface across devices when making changes to attributes.</p>
+<p><strong>No Markdown<br />
+</strong>I was disappointed that a plugin was needed for Markdown, especially as the most recommended solution is quite a vast plugin that unnecessarily integrates my blog with a <code>wordpress.com</code> account for various other features. Even with Markdown support, there is no syntax highlighting for it in the editor.</p>
+<p><strong>Less Control<br />
+</strong>WordPress obscures a lot of the markup process and I have already found it putting tags where I don&#8217;t want them with no way to circumvent it. There is an awful lot of crap in the headers and footers, though part of this is for improved indexing in search engines which is one of the reasons I switched in the first place.</p>
+<p><strong>Post migration</strong><br />
+I said content migration aside, but it was such an awful and frustrating process that I encourage you to think twice about how you will get your old posts imported if you are planning to do this yourself.</p>
+<h2>Initial Conclusion</h2>
+<p>Sidetracked by how simple the installation process was, I&#8217;d clearly underestimated the work that was required post-install for actually getting the blog migrated with the same functionality, content and design.</p>
+<p>That said, overall, I think I&#8217;m happy with the migration currently &#8211; the pros narrowly outweigh the cons and hopefully most of the effort expended is a one-time-only initial set-up deal. At the very least, it&#8217;s easier to get things out of WordPress, than in. I&#8217;m looking forward to a more streamlined authoring process from this point on.</p>
+<p>Though, I think if I&#8217;d known how painful content migration was going to be (I expected having to do some conversion and maybe manual input of metadata, but was not expecting the conversion to be so flaky), I would definitely have thought twice about whether my time could have been better spent on something else. With all this in mind, I&#8217;d like to suggest a new installation tagline for the WordPress team:</p>
+<blockquote><p>WordPress: Five minutes to install, a lifetime to configure.</p></blockquote>
+<div class='footnotes' id='footnotes-54'>
+<div class='footnotedivider'></div>
+<ol>
+<li id='fn-54-1'> Though, it is written in PHP &#8211; a language generally regarded as having a very low barrier of entry. <span class='footnotereverse'><a href='#fnref-54-1'>&#8617;</a></span></li>
+<li id='fn-54-2'> Typically originating from China&#8230; <span class='footnotereverse'><a href='#fnref-54-2'>&#8617;</a></span></li>
+<li id='fn-54-3'> Although this often proves problematic in practice, as plugins often require structural permissions, such as the creation of tables. <span class='footnotereverse'><a href='#fnref-54-3'>&#8617;</a></span></li>
+</ol>
+</div>
+</div>
+                
+                        <div class="tag-well"><span><span class="fa fa-tags"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/tag/blog/" rel="tag">blog</a>,&nbsp; <a href="https://samnicholls.net/tag/installation/" rel="tag">installation</a>,&nbsp; <a href="https://samnicholls.net/tag/jekyll/" rel="tag">jekyll</a>,&nbsp; <a href="https://samnicholls.net/tag/migration/" rel="tag">migration</a>,&nbsp; <a href="https://samnicholls.net/tag/security/" rel="tag">security</a>,&nbsp; <a href="https://samnicholls.net/tag/wordpress/" rel="tag">wordpress</a></span></div>
+                
+                <nav class="further-reading">
+	<div class="previous">
+		<span>Previous Post</span>
+		<a href="https://samnicholls.net/2015/10/19/welcome-back-wordpress/">Welcome back, WordPress</a>
+	</div>
+	<div class="next">
+		<span>Next Post</span>
+		<a href="https://samnicholls.net/2015/10/25/fiddling-with-a-fitbit/">Fiddling with a Fitbit Charge HR</a>
+	</div>
+</nav>            </article>
+                                <div class="card">
+
+<div id="disqus_thread"></div>
+                </div>
+    
+</section>
+
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar-container">
+		            <div id="widget-area" class="widget-area" role="complementary">
+                <div id="custom_html-3" class="widget_text card widget widget_custom_html"><div class="textwidget custom-html-widget"><img src="https://pbs.twimg.com/profile_images/1044255545610436609/wt33ZbtU_400x400.jpg" height=120 style="margin-top: 20px; margin-right:10px; float: left;" alt="Sam Nicholls" />
+<div style="padding-top:15px; line-height: normal"><b style="font-size: 1.2em">Sam Nicholls</b><br><span style="font-size: 0.9em;">Haplotype Wrangler at University of Birmingham.<br>I tell computers to do things, then I write about how it all went wrong.</span></div></div></div><div id="search-2" class="card widget widget_search"><form style="margin-top:15px" action="https://samnicholls.net/" id="searchform" method="get" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" name="s" id="s" placeholder="e.g. Search...">
+    </div>
+</form>
+</div><div id="twitter_timeline-5" class="card widget widget_twitter_timeline"><a class="twitter-timeline" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/samstudio8">My Tweets</a></div><div id="categories-5" class="card widget widget_categories"><h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://samnicholls.net/category/bioinf/">Bioinformatics</a>
+<ul class='children'>
+	<li class="cat-item cat-item-8"><a href="https://samnicholls.net/category/bioinf/au-phd/">AU-PhD</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://samnicholls.net/category/bioinf/sanger-qc/" title="Sanger QC Project">Sanger-QC</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="https://samnicholls.net/category/bioinf/tools/">Tools</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-185"><a href="https://samnicholls.net/category/bioinf/tools/chitin/">chitin</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-80"><a href="https://samnicholls.net/category/devops/">Devops</a>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://samnicholls.net/category/event/">Event</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://samnicholls.net/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-176"><a href="https://samnicholls.net/category/hardware/">Hardware</a>
+<ul class='children'>
+	<li class="cat-item cat-item-223"><a href="https://samnicholls.net/category/hardware/beehive-monitor/">Beehive Monitor</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="https://samnicholls.net/category/hardware/esp8266/">ESP8266</a>
+</li>
+	<li class="cat-item cat-item-236"><a href="https://samnicholls.net/category/hardware/lego-sequencer/">Lego Sequencer</a>
+</li>
+	<li class="cat-item cat-item-177"><a href="https://samnicholls.net/category/hardware/lightstick/">Lightstick</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-151"><a href="https://samnicholls.net/category/lab/">Lab</a>
+<ul class='children'>
+	<li class="cat-item cat-item-150"><a href="https://samnicholls.net/category/lab/protocol-guides/">Protocol Guides</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://samnicholls.net/category/meta/">Meta</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="https://samnicholls.net/category/mysteries/">Mysteries</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://samnicholls.net/category/personal/">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://samnicholls.net/category/photo/">Photography</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="https://samnicholls.net/category/programming/">Programming</a>
+<ul class='children'>
+	<li class="cat-item cat-item-145"><a href="https://samnicholls.net/category/programming/documentation/">Documentation</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="https://samnicholls.net/category/programming/python/">Python</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-48"><a href="https://samnicholls.net/category/status-report/">Status Report</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="https://samnicholls.net/category/sysadm/">System Administration</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://samnicholls.net/category/uncategorised/">Uncategorised</a>
+</li>
+			</ul>
+
+			</div>            </div>
+		        </aside>
+    </div>
+
+</div> <!-- /container -->
+
+<footer id="main-footer" class="bg-primary">
+	<div id="footer-widgets" class="container">
+		    </div>
+</footer>
+
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/comment-reply.min.js?ver=5.7.5' id='comment-reply-js'></script>
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"samposium-blog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17' id='disqus_count-js'></script>
+<script type='text/javascript' id='disqus_embed-js-extra'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"54 http:\/\/blog.ironowl.io\/?p=54","disqusShortname":"samposium-blog","disqusTitle":"Wrangling WordPress","disqusUrl":"https:\/\/samnicholls.net\/2015\/10\/23\/wrangling-wordpress\/","postId":"54"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17' id='disqus_embed-js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202335' id='devicepx-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/jetpack/_inc/twitter-timeline.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/wp-embed.min.js?ver=5.7.5' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202335.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.9',blog:'101350222',post:'54',tz:'1',srv:'samnicholls.net'} ]);
+	_stq.push([ 'clickTrackerInit', '101350222', '54' ]);
+</script>
+
+<script type="text/javascript">
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+
+var collapsed = false;
+jQuery( document ).ready(function($) {
+    $('.navbar-toggle').click(function(){
+        console.log(collapsed);
+        if(collapsed) {
+            $('.navbar-header > button').html('<i class="fa fa-bars"></i>');
+        } else {
+            $('.navbar-header > button').html('<i class="fa fa-times"></i>');
+        }
+        $('.navbar-collapse').toggle(200);
+        collapsed = !collapsed;
+    });
+});
+</script>
+	
+</body>
+
+</html>

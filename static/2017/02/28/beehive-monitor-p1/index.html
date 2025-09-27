@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://samnicholls.net/xmlrpc.php">
+
+	
+	<title>Building a Beehive Monitor: A Prototype &#8211; Samposium</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Feed" href="https://samnicholls.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Comments Feed" href="https://samnicholls.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Building a Beehive Monitor: A Prototype Comments Feed" href="https://samnicholls.net/2017/02/28/beehive-monitor-p1/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/samnicholls.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.5"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://samnicholls.net/wp-includes/css/dist/block-library/style.min.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slabo-css'  href='//fonts.googleapis.com/css?family=Slabo+27px&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fa-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/font-awesome.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='rd-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-custom-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/custom.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://samnicholls.net/wp-content/plugins/jetpack/css/jetpack.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/samnicholls.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/fd-footnotes/fdfootnotes.js?ver=1.34' id='fdfootnote_script-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/bootstrap.js?ver=5.7.5' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/custom.js?ver=5.7.5' id='js-custom-js'></script>
+<link rel="https://api.w.org/" href="https://samnicholls.net/wp-json/" /><link rel="alternate" type="application/json" href="https://samnicholls.net/wp-json/wp/v2/posts/2148" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://samnicholls.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://samnicholls.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.5" />
+<link rel="canonical" href="https://samnicholls.net/2017/02/28/beehive-monitor-p1/" />
+<link rel='shortlink' href='https://wp.me/p6RfP0-yE' />
+<link rel="alternate" type="application/json+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2017%2F02%2F28%2Fbeehive-monitor-p1%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2017%2F02%2F28%2Fbeehive-monitor-p1%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62206786-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Building a Beehive Monitor: A Prototype" />
+<meta property="og:url" content="https://samnicholls.net/2017/02/28/beehive-monitor-p1/" />
+<meta property="og:description" content="Since I got my beehive last summer, I&#8217;ve been toying with the idea of cramming it full of interesting sensors to report on the status of my precious hive. Now I am." />
+<meta property="article:published_time" content="2017-02-28T00:31:11+00:00" />
+<meta property="article:modified_time" content="2017-02-28T11:32:51+00:00" />
+<meta property="og:site_name" content="Samposium" />
+<meta property="og:image" content="https://samnicholls.net/wp-content/uploads/2017/02/Screenshot-from-2017-02-26-16-57-16-e1488241487909-1024x724.png" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary" />
+</head>
+
+<body class="post-template-default single single-post postid-2148 single-format-standard">
+
+
+        
+<header id="main-header">
+    <nav class="navbar-default navbar-static-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rd-collapse">
+                    <span class="fa fa-bars"></span>
+                    <span class="sr-only screen-reader-text">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href=" https://samnicholls.net/">Samposium</a>            </div>
+            
+            <div id="rd-collapse" class="collapse navbar-collapse">
+            
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body class="post-template-default single single-post postid-2148 single-format-standard">
+
+<div id="main-menu" class="navbar-nav nav"><ul>
+<li class="page_item page-item-8"><a href="https://samnicholls.net/about/">About Me</a></li>
+<li class="page_item page-item-11"><a href="https://samnicholls.net/talks/">Talks</a></li>
+<li class="page_item page-item-15"><a href="https://samnicholls.net/things-i-have-learned/">Things I Have Learned</a></li>
+</ul></div></body></html>
+        </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="row"><!-- Content -->
+<section class="col-md-8 content-container">
+                          <article class="card post hentry post-2148 type-post status-publish format-standard category-beehive-monitor category-esp8266 tag-apache2 tag-arduino tag-beehive tag-bees tag-cubism tag-d3 tag-dht22 tag-esp8266 tag-monitoring tag-moteino tag-radio tag-sensors tag-socket-io tag-software-serial tag-telehive tag-websockets" id="post-2148">
+                <header class="entry-header">
+                        <h1 class="entry-title">Building a Beehive Monitor: A Prototype</h1>                </header><!-- .entry-header -->
+
+                <div class="meta-well">
+                    <span style="margin-right:15px;" class=""><span class="fa fa-user"></span>&nbsp;&nbsp;&nbsp;<span class="author vcard"><a class="url fn n" href="https://samnicholls.net/about/">Sam Nicholls</a></span></span>
+
+                    <span style="margin-right:15px;" class="entry-date published updated post-date"><span class="fa fa-clock-o"></span>&nbsp;&nbsp; <time class="entry-date published" datetime="2017-02-28T00:31:11+00:00">28th February 2017</time><time class="updated" datetime="2017-02-28T11:32:51+00:00">28th February 2017</time></span>                    <span style="margin-right:15px;" class=""><span class="fa fa-comments-o"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/2017/02/28/beehive-monitor-p1/#respond"><span class="dsq-postid" data-dsqidentifier="2148 https://samnicholls.net/?p=2148">No Comments yet</span></a></span>
+                    <span class=""><span class="fa fa-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="https://samnicholls.net/category/hardware/beehive-monitor/" rel="category tag">Beehive Monitor</a>, <a href="https://samnicholls.net/category/hardware/esp8266/" rel="category tag">ESP8266</a></span>
+                </div>
+
+                <div class="entry-content"><p>Ever since I got my own beehive last summer, I&#8217;ve been toying with the idea about cramming it full of interesting sensors to report on the status of my precious hive. During Winter, it is too cold to perform inspections and since my final inspection last October I&#8217;ve grown increasingly curious and anxious as to whether the bees had survived. Last week, I finally got a spell of reasonable weather and <a href="https://apiary.ironowl.io/inspection/4/">I&#8217;m happy to report that the bees are doing well</a>.</p>
+<p>It has been some time since I&#8217;d last seen inside the hive. During and following the inspection, I was once again inspired to find a way to monitor their progress. Although primarily due of self-interest as I find the hive fascinating, monitoring a hive poses both some interesting technical problems, and a platform on which to actually quantify their status. Such information could become much more valuable in future when we have more hives, as it would be possible to establish a baseline from which to detect for anomalies early. But again, mostly because beehives are cool.</p>
+<h2>Proof of Concept Monitor and Transmitter</h2>
+<p>I&#8217;d been discussing these ideas with <a href="https://tomblanch.wordpress.com/">Tom</a>, who <a href="https://samnicholls.net/2016/11/07/lightstick-p1/">you might remember from the lightstick project</a> as being the half of the newly created <a href="https://twitter.com/samtomindustrys">Sam and Tom Industrys</a> venture, who is actually capable of making things with electronics.</p>
+<p>We began assembling a quick proof of concept. Handily, Tom had a bunch of <a href="https://www.sparkfun.com/products/10167">DHT22 temperature and humidity sensors</a> lying around which provided a good start. Regarding a microcontroller, I&#8217;ve wanted an excuse to play with radio communication for some time, and this was a nice opportunity to try out a pair of <a href="https://lowpowerlab.com/guide/moteino/">Moteino R4</a>s. We also discussed a future idea to use Bluetooth because the idea of pairing my phone with a beehive during an inspection seemed both amusing, and a useful way to download data that is less practical to transmit over radio to a device.</p>
+<p>We set to work. Tom retrofitted some code he had previously written to manage wireless comms between Moteinos, while I cut and badly stripped some wires. After some breadboard battling, we had a working prototype in quarter of an hour. Not content with this, we attached the sensors to lengths of flat cable, added a <a href="https://www.sparkfun.com/products/8688">TEMT6000 ambient light sensor</a> and a NeoPixel ring for no particular reason other than the fact <a href="https://samnicholls.net/2016/11/07/lightstick-p1/">we love NeoPixels so much</a>.</p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2017/02/IMG_20170221_162240.jpg"><img src="https://samnicholls.net/wp-content/uploads/2017/02/IMG_20170221_162240-1024x768.jpg" alt="" width="80%" class="alignnone size-large wp-image-2175" srcset="https://samnicholls.net/wp-content/uploads/2017/02/IMG_20170221_162240-1024x768.jpg 1024w, https://samnicholls.net/wp-content/uploads/2017/02/IMG_20170221_162240-300x225.jpg 300w, https://samnicholls.net/wp-content/uploads/2017/02/IMG_20170221_162240-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<h2>Base Station Prototype Receiver</h2>
+<p>We verified that the packets containing the sensor data were being broadcast. The Moteino queries the sensors and loads the results into a struct which is then transmitted over radio as binary by <a href="https://github.com/LowPowerLab/RFM69">the RMF69 library</a>. Now we needed a base station to pick up the transmissions and do something interesting.</p>
+<p>We already had packet handling and receiving code for the second Moteino, but as we&#8217;d decided (for the time being at least) that the endpoint for the sensor data was to be hosted on the internet, we needed WiFi. Enter our WiFi enabled friend: the ESP8266.</p>
+<p>We needed to establish a software serial link between the Moteino and ESP8266, a trivial use-case that can be solved by the Arduino <a href="https://www.arduino.cc/en/Reference/softwareSerial">SoftwareSerial library</a>. I did encounter some familiar confusion arising from our <a href="https://github.com/SAM-AND-TOM-ENTERPRISES/lightstick/blob/master/esp8266-node-mcu-pinout.png">trusty pinout diagram</a>, connecting the marked <code>RX</code> and <code>TX</code> pins on the NodeMCU to the Moteino interfered with my ability to actually program it. We instead set the <code>RX</code>/<code>TX</code> pins to the unused <code>D1</code> and <code>D2</code> respectively.</p>
+<p>The receiving Moteino captures each transmitted packet, reads the first byte to determine its type (we&#8217;ve defined only one, but it&#8217;s good to future proof early) and if it is the right size, passes the binary data through its serial interface to the ESP8266 before returning an acknowledgement to the transmitting Moteino.</p>
+<p>The NodeMCU uses the <code>ESP8266WiFi</code> library to establish a connection to the SSID defined in our configuration file. The <a href="https://github.com/esp8266/Arduino/tree/master/libraries">ESP8266 Arduino repository</a> serves as both a helpful lookup of the source, and typically features examples of each library.</p>
+<p>Once connection to the designated SSID has been negotiated, the controller listens to the software serial receive pin for data. When available, the first byte is read (as before on the Moteinos) to determine the packet type. If the packet type is valid, we listen for as many bytes as necessary to fill the struct for that particular packet type. We ran in to a lot of head scratching here, eventually discovering that our packet structs were larger than calculated, as <code>uint8_t</code>&#8216;s are packed with 3 leading bytes to align them to the architecture of the NodeMCU. This caused us almost an hour of debugging many off-by-some-bytes oddities in our packet handling.</p>
+<p>Once a valid packet&#8217;s binary stream has been loaded into the appropriate struct, we translate it to a JSON string via the rather helpful <a href="https://github.com/bblanchon/ArduinoJson">ArduinoJSON</a> library. As the <code>ESP8266HTTPClient</code> requires a <code>char*</code> payload, I wasn&#8217;t sure of the correct way to actually transmit the <code>JSONObject</code>, so I rather unpleasantly abused its <code>printTo</code> function to write it into a fixed size <code>char</code> array:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105ad8d926010950564" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Arduino</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+[...]
+    StaticJsonBuffer&lt;256&gt; jsonBuffer;
+    JsonObject&amp; json = jsonBuffer.createObject();
+
+    jsonifyPayload(json, payload, pkt_type);
+        
+    http.begin(endpoint, fingerprint);
+    http.addHeader("Content-Type", "application/json");
+
+    char msg[256];
+    json.printTo(msg);
+    Serial.print(msg);
+
+    int httpCode = http.POST(msg);
+[...]</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-2">2</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-4">4</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-6">6</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-8">8</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-10">10</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-12">12</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d926010950564-14">14</div><div class="crayon-num" data-line="crayon-64f105ad8d926010950564-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105ad8d926010950564-1"><span class="crayon-sy">[</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">]</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">StaticJsonBuffer</span><span class="crayon-o">&lt;</span><span class="crayon-cn">256</span><span class="crayon-o">&gt;</span><span class="crayon-h"> </span><span class="crayon-v">jsonBuffer</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-64f105ad8d926010950564-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">JsonObject</span><span class="crayon-o">&amp;</span><span class="crayon-h"> </span><span class="crayon-v">json</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">jsonBuffer</span><span class="crayon-sy">.</span><span class="crayon-v">createObject</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-4">&nbsp;</div><div class="crayon-line" id="crayon-64f105ad8d926010950564-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">jsonifyPayload</span><span class="crayon-sy">(</span><span class="crayon-v">json</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">payload</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">pkt_type</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-64f105ad8d926010950564-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">http</span><span class="crayon-sy">.</span><span class="crayon-v">begin</span><span class="crayon-sy">(</span><span class="crayon-v">endpoint</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">fingerprint</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">http</span><span class="crayon-sy">.</span><span class="crayon-v">addHeader</span><span class="crayon-sy">(</span><span class="crayon-s">"Content-Type"</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-s">"application/json"</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-64f105ad8d926010950564-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">char</span><span class="crayon-h"> </span><span class="crayon-v">msg</span><span class="crayon-sy">[</span><span class="crayon-cn">256</span><span class="crayon-sy">]</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-64f105ad8d926010950564-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-v">json</span><span class="crayon-sy">.</span><span class="crayon-v">printTo</span><span class="crayon-sy">(</span><span class="crayon-v">msg</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-12"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-st">Serial</span><span class="crayon-sy">.</span><span class="crayon-e">print</span><span class="crayon-sy">(</span><span class="crayon-v">msg</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-64f105ad8d926010950564-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d926010950564-14"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">int</span><span class="crayon-h"> </span><span class="crayon-v">httpCode</span><span class="crayon-h"> </span><span class="crayon-o">=</span><span class="crayon-h"> </span><span class="crayon-v">http</span><span class="crayon-sy">.</span><span class="crayon-v">POST</span><span class="crayon-sy">(</span><span class="crayon-v">msg</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-64f105ad8d926010950564-15"><span class="crayon-sy">[</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">.</span><span class="crayon-sy">]</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0010 seconds] -->
+<p></p>
+<p>Note the <code>fingerprint</code> in the <code>http.begin</code>: a required parameter containing the SHA1 fingerprint of the endpoint address if you are attempting to use HTTPS. Without this, the library will just refuse to make the connection. It would have been trivial to diagnose this earlier if we could actually work out how to properly enable debug messages from the <code>ESP8266HTTPClient</code> library. Despite our best attempts, we had to force the debug mechanism to work by manually editing away the guards around the <code>#define DEBUG_HTTPCLIENT</code> header, in the installed packages directory. No idea why. Grim.</p>
+<p>Other time wasted involved a lot of tail chasing given after what appeared to be the delivery of a successful <code>POST</code> request, a <code>httpCode</code> of <code>-5</code>. It would later turn out that the Python <code>SimpleHTTPServer</code> example I lazily downloaded from the web failed to set the headers of the response to the POST request, causing the <code>ESP8266HTTPClient</code> to believe the connection to the server was lost (an all-else-fails assumption it makes if it is unable to parse a response from the server). The <code>-5</code> refers to a definition in the library header: <code>#define HTTPC_ERROR_CONNECTION_LOST     (-5)</code>.</p>
+<p>Finally, we received <code>HTTP_CODE_OK</code> responses back from our test server, which happily dumped our JSON response to the terminal on my laptop&#8230;. After I remembered to join the WiFi network we&#8217;d connected the NodeMCU to, at least.</p>
+<h2>The Web Interface: Back from the Dead</h2>
+<p>We have established end-to-end communications and confirmed that sensor data can find its way to a test server hosted on the local network. The final piece of the puzzle was to throw up a website designed to receive, store and present the data. Somewhat fortuitously, a project that I had begun and abandoned in 2014 seemed to fit the bill: <a href="https://github.com/samstudio8/poisson">Poisson</a>, a <code>flask</code>-fronted, <code>redis</code>-backed, schema-less monitoring system. Despite not looking at it in almost three years, I felt there might be some mileage in revising it for our purpose.</p>
+<p>Initially Poisson was designed to monitor the occurrence of arbitrary events, referred to by a key. A <code>GET</code> request with a key, would cause Poisson to add a timestamped entry to the <code>redis</code> database for that key. For example, one could count occurrences of passengers, customers, sales or other time sensitive events by emitting <code>GET</code> requests with a shared key to the Poisson server. The goal was to generate interesting Poisson distribution statistics from the timestamped data, but I never get as far as the fun mathematics. The front end made use of the hip-at-the-time <code>socket.io</code> framework, capable of pushing newly detected events in real time to connected clients, and drawing some <a href="https://square.github.io/cubism/">pretty pretty graphs using d3 and <code>cubism</code></a>.</p>
+<p>After some quick tweaks that allowed requests to also specify a value for the latest event (instead of assuming <code>1</code>) and provided an API endpoint for <code>POST</code> requests that wrapped the mechanism of the original <code>GET</code> for each key:value pair in the JSON data, we were ready to go.</p>
+<p>Until I discovered all this newfangled websocket nonsense didn&#8217;t seem to play well with <code>apache</code> in practice. After much frustration, the best solution appeared to involve installing <code>gevent</code> with <code>pip</code> on the server, which according to the <a href="https://flask-socketio.readthedocs.io/en/latest/#deployment">flask-socketio documentation for deployment</a> would cause <code>flask-socketio</code> to replace the development server (typically inappropriate for production use) with an embedded server capable of working in prod. I could then invoke the application myself to bind it to some local port. After some fiddling, I found the following two lines in my <code>apache</code> config were all that was needed to correctly proxy the locally-run Poisson application to my existing webserver.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-64f105ad8d930686829554" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+ProxyPass http://localhost:5000/
+ProxyPassReverse  http://localhost:5000/</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-64f105ad8d930686829554-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-64f105ad8d930686829554-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-64f105ad8d930686829554-1"><span class="crayon-e">ProxyPass </span><span class="crayon-v">http</span><span class="crayon-o">:</span><span class="crayon-c">//localhost:5000/</span></div><div class="crayon-line crayon-striped-line" id="crayon-64f105ad8d930686829554-2"><span class="crayon-e">ProxyPassReverse&nbsp;&nbsp;</span><span class="crayon-v">http</span><span class="crayon-o">:</span><span class="crayon-c">//localhost:5000/</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<h2>Testing the Prototypes (not in a hive)</h2>
+<p>Clearly we&#8217;re not hive ready. We&#8217;ve planted the current version of the hardware at Tom&#8217;s house (to avoid having to deal with getting the ESP8266 to work with <code>eduroam</code>&#8216;s 802.1x authentication) and had the server running long enough to collect over 100,000 events and iron out any small issues. We&#8217;re currently polling approximately every 30 seconds, and the <a href="https://poisson.ironowl.io/">corresponding deployment of the Poisson interface</a> is configured to show over 24 hours of data at a resolution of 2 minutes, and the past 90 minutes at a resolution of 30 seconds.</p>
+<p>All in all I&#8217;m pretty pleased with what we&#8217;ve managed to accomplish in around two days of half baked work, and the interface is probably the shiniest piece of web I&#8217;ve had the displeasure of making since <a href="https://triage.ironowl.io/sam/dissertation/">Triage</a>.</p>
+<p><a href="https://samnicholls.net/wp-content/uploads/2017/02/Screenshot-from-2017-02-26-16-57-16-e1488241487909.png"><img src="https://samnicholls.net/wp-content/uploads/2017/02/Screenshot-from-2017-02-26-16-57-16-e1488241487909-1024x724.png" alt="" width="80%" class="alignnone size-large wp-image-2205" srcset="https://samnicholls.net/wp-content/uploads/2017/02/Screenshot-from-2017-02-26-16-57-16-e1488241487909-1024x724.png 1024w, https://samnicholls.net/wp-content/uploads/2017/02/Screenshot-from-2017-02-26-16-57-16-e1488241487909-300x212.png 300w, https://samnicholls.net/wp-content/uploads/2017/02/Screenshot-from-2017-02-26-16-57-16-e1488241487909-768x543.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<h2>Conclusion</h2>
+<p>We&#8217;ve collected over 100,000 events with little issue. I&#8217;ve ordered some additional sensors of interest, on the way are some sound sensors, and infrared sensors. The latter I shall be using in an attempt to count (or at least monitor) bee in/out activity at the hive entrance.</p>
+<p>It won&#8217;t be until nearer the middle-to-end of March that the weather will likely pick up enough to mess around with the hive at length. Though we must bee proof the sensors and construct a weather proof box for the transmitting Moteino before then. You can also look at the <a href="https://github.com/SAM-AND-TOM-ENTERPRISES/telehive">microcontroller code in our <code>Telehive</code> repository</a>, and the <a href="https://github.com/samstudio8/poisson">Poisson flask application repository</a>.</p>
+<p>In the meantime, <a href="https://poisson.ironowl.io">go spy on Tom&#8217;s flat live</a>.</p>
+<h1>tl;dr</h1>
+<ul>
+<li>Moteinos are awesome, low power radio communications are cool</li>
+<li>The Arduino IDE can be a monumental pain in the ass sometimes</li>
+<li>We had to manually uncomment lines in the headers for the <code>ESP8266HTTPClient</code> library to enable debugging, we still cannot fathom why</li>
+<li>You need to specify the SHA1 fingerprint of your remote server as a second parameter to <code>http.begin</code> if you want to use HTTPS with <code>ESP8266HTTPClient</code></li>
+<li>Your crap Python test server should set the headers for its response, else your <code>ESP8266HTTPClient</code> connection will think it has failed</li>
+<li><code>ESP8266HTTPClient</code> uses its own response codes that are <code>#define</code>&#8216;d in its headers, not regular HTTP codes</li>
+<li><code>uint8_t</code>&#8216;s are packed with 3 bytes to align them on the NodeMCU ESP8266 architecture</li>
+<li>This kind of stuff continues to be fraught with frustration, but is rather rewarding when it all comes together</li>
+</ul>
+</div>
+                
+                        <div class="tag-well"><span><span class="fa fa-tags"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/tag/apache2/" rel="tag">apache2</a>,&nbsp; <a href="https://samnicholls.net/tag/arduino/" rel="tag">arduino</a>,&nbsp; <a href="https://samnicholls.net/tag/beehive/" rel="tag">beehive</a>,&nbsp; <a href="https://samnicholls.net/tag/bees/" rel="tag">bees</a>,&nbsp; <a href="https://samnicholls.net/tag/cubism/" rel="tag">cubism</a>,&nbsp; <a href="https://samnicholls.net/tag/d3/" rel="tag">d3</a>,&nbsp; <a href="https://samnicholls.net/tag/dht22/" rel="tag">dht22</a>,&nbsp; <a href="https://samnicholls.net/tag/esp8266/" rel="tag">esp8266</a>,&nbsp; <a href="https://samnicholls.net/tag/monitoring/" rel="tag">monitoring</a>,&nbsp; <a href="https://samnicholls.net/tag/moteino/" rel="tag">moteino</a>,&nbsp; <a href="https://samnicholls.net/tag/radio/" rel="tag">radio</a>,&nbsp; <a href="https://samnicholls.net/tag/sensors/" rel="tag">sensors</a>,&nbsp; <a href="https://samnicholls.net/tag/socket-io/" rel="tag">socket.io</a>,&nbsp; <a href="https://samnicholls.net/tag/software-serial/" rel="tag">software serial</a>,&nbsp; <a href="https://samnicholls.net/tag/telehive/" rel="tag">telehive</a>,&nbsp; <a href="https://samnicholls.net/tag/websockets/" rel="tag">websockets</a></span></div>
+                
+                <nav class="further-reading">
+	<div class="previous">
+		<span>Previous Post</span>
+		<a href="https://samnicholls.net/2017/01/30/laptop-laser-engrave/">Laser Etching my XPS 13 Laptop: Orphan Black style</a>
+	</div>
+	<div class="next">
+		<span>Next Post</span>
+		<a href="https://samnicholls.net/2017/03/15/lego-sequencer/">We made a Lego DNA Sequencer to teach kids about DNA, Sequencing and Phenotypes</a>
+	</div>
+</nav>            </article>
+                                <div class="card">
+
+<div id="disqus_thread"></div>
+                </div>
+    
+</section>
+
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar-container">
+		            <div id="widget-area" class="widget-area" role="complementary">
+                <div id="custom_html-3" class="widget_text card widget widget_custom_html"><div class="textwidget custom-html-widget"><img src="https://pbs.twimg.com/profile_images/1044255545610436609/wt33ZbtU_400x400.jpg" height=120 style="margin-top: 20px; margin-right:10px; float: left;" alt="Sam Nicholls" />
+<div style="padding-top:15px; line-height: normal"><b style="font-size: 1.2em">Sam Nicholls</b><br><span style="font-size: 0.9em;">Haplotype Wrangler at University of Birmingham.<br>I tell computers to do things, then I write about how it all went wrong.</span></div></div></div><div id="search-2" class="card widget widget_search"><form style="margin-top:15px" action="https://samnicholls.net/" id="searchform" method="get" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" name="s" id="s" placeholder="e.g. Search...">
+    </div>
+</form>
+</div><div id="twitter_timeline-5" class="card widget widget_twitter_timeline"><a class="twitter-timeline" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/samstudio8">My Tweets</a></div><div id="categories-5" class="card widget widget_categories"><h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://samnicholls.net/category/bioinf/">Bioinformatics</a>
+<ul class='children'>
+	<li class="cat-item cat-item-8"><a href="https://samnicholls.net/category/bioinf/au-phd/">AU-PhD</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://samnicholls.net/category/bioinf/sanger-qc/" title="Sanger QC Project">Sanger-QC</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="https://samnicholls.net/category/bioinf/tools/">Tools</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-185"><a href="https://samnicholls.net/category/bioinf/tools/chitin/">chitin</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-80"><a href="https://samnicholls.net/category/devops/">Devops</a>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://samnicholls.net/category/event/">Event</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://samnicholls.net/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-176"><a href="https://samnicholls.net/category/hardware/">Hardware</a>
+<ul class='children'>
+	<li class="cat-item cat-item-223"><a href="https://samnicholls.net/category/hardware/beehive-monitor/">Beehive Monitor</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="https://samnicholls.net/category/hardware/esp8266/">ESP8266</a>
+</li>
+	<li class="cat-item cat-item-236"><a href="https://samnicholls.net/category/hardware/lego-sequencer/">Lego Sequencer</a>
+</li>
+	<li class="cat-item cat-item-177"><a href="https://samnicholls.net/category/hardware/lightstick/">Lightstick</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-151"><a href="https://samnicholls.net/category/lab/">Lab</a>
+<ul class='children'>
+	<li class="cat-item cat-item-150"><a href="https://samnicholls.net/category/lab/protocol-guides/">Protocol Guides</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://samnicholls.net/category/meta/">Meta</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="https://samnicholls.net/category/mysteries/">Mysteries</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://samnicholls.net/category/personal/">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://samnicholls.net/category/photo/">Photography</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="https://samnicholls.net/category/programming/">Programming</a>
+<ul class='children'>
+	<li class="cat-item cat-item-145"><a href="https://samnicholls.net/category/programming/documentation/">Documentation</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="https://samnicholls.net/category/programming/python/">Python</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-48"><a href="https://samnicholls.net/category/status-report/">Status Report</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="https://samnicholls.net/category/sysadm/">System Administration</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://samnicholls.net/category/uncategorised/">Uncategorised</a>
+</li>
+			</ul>
+
+			</div>            </div>
+		        </aside>
+    </div>
+
+</div> <!-- /container -->
+
+<footer id="main-footer" class="bg-primary">
+	<div id="footer-widgets" class="container">
+		    </div>
+</footer>
+
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/comment-reply.min.js?ver=5.7.5' id='comment-reply-js'></script>
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"samposium-blog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17' id='disqus_count-js'></script>
+<script type='text/javascript' id='disqus_embed-js-extra'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"2148 https:\/\/samnicholls.net\/?p=2148","disqusShortname":"samposium-blog","disqusTitle":"Building a Beehive Monitor: A Prototype","disqusUrl":"https:\/\/samnicholls.net\/2017\/02\/28\/beehive-monitor-p1\/","postId":"2148"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17' id='disqus_embed-js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202335' id='devicepx-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/jetpack/_inc/twitter-timeline.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/wp-embed.min.js?ver=5.7.5' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202335.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.9',blog:'101350222',post:'2148',tz:'1',srv:'samnicholls.net'} ]);
+	_stq.push([ 'clickTrackerInit', '101350222', '2148' ]);
+</script>
+
+<script type="text/javascript">
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+
+var collapsed = false;
+jQuery( document ).ready(function($) {
+    $('.navbar-toggle').click(function(){
+        console.log(collapsed);
+        if(collapsed) {
+            $('.navbar-header > button').html('<i class="fa fa-bars"></i>');
+        } else {
+            $('.navbar-header > button').html('<i class="fa fa-times"></i>');
+        }
+        $('.navbar-collapse').toggle(200);
+        collapsed = !collapsed;
+    });
+});
+</script>
+	
+</body>
+
+</html>

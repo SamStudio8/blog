@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="https://samnicholls.net/xmlrpc.php">
+
+	
+	<title>A pretend biologist&#8217;s guide to running a PCR (polymerase chain reaction) &#8211; Samposium</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Feed" href="https://samnicholls.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; Comments Feed" href="https://samnicholls.net/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Samposium &raquo; A pretend biologist&#8217;s guide to running a PCR (polymerase chain reaction) Comments Feed" href="https://samnicholls.net/2016/06/21/pcr-protocol/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/samnicholls.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.5"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='crayon-css'  href='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://samnicholls.net/wp-includes/css/dist/block-library/style.min.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='child-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slabo-css'  href='//fonts.googleapis.com/css?family=Slabo+27px&#038;ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fa-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/font-awesome.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='rd-style-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe-child/style.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='css-custom-css'  href='https://samnicholls.net/wp-content/themes/responsive-deluxe/css/custom.css?ver=5.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://samnicholls.net/wp-content/plugins/jetpack/css/jetpack.css?ver=4.9' type='text/css' media='all' />
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='crayon_js-js-extra'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/samnicholls.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta' id='crayon_js-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/fd-footnotes/fdfootnotes.js?ver=1.34' id='fdfootnote_script-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/bootstrap.js?ver=5.7.5' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/themes/responsive-deluxe/js/custom.js?ver=5.7.5' id='js-custom-js'></script>
+<link rel="https://api.w.org/" href="https://samnicholls.net/wp-json/" /><link rel="alternate" type="application/json" href="https://samnicholls.net/wp-json/wp/v2/posts/966" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://samnicholls.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://samnicholls.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.5" />
+<link rel="canonical" href="https://samnicholls.net/2016/06/21/pcr-protocol/" />
+<link rel='shortlink' href='https://wp.me/p6RfP0-fA' />
+<link rel="alternate" type="application/json+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2016%2F06%2F21%2Fpcr-protocol%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://samnicholls.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsamnicholls.net%2F2016%2F06%2F21%2Fpcr-protocol%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62206786-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'>
+<style type='text/css'>img#wpstats{display:none}</style>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="A pretend biologist&#8217;s guide to running a PCR (polymerase chain reaction)" />
+<meta property="og:url" content="https://samnicholls.net/2016/06/21/pcr-protocol/" />
+<meta property="og:description" content="I wrote a PCR (polymerase chain reaction) protocol for somebody who has never held a pipette before. Prepare to spend all day pipetting colourless liquids into a tube, only to find that it all didn…" />
+<meta property="article:published_time" content="2016-06-20T23:39:02+00:00" />
+<meta property="article:modified_time" content="2016-06-21T09:57:07+00:00" />
+<meta property="og:site_name" content="Samposium" />
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:card" content="summary" />
+</head>
+
+<body class="post-template-default single single-post postid-966 single-format-standard">
+
+
+        
+<header id="main-header">
+    <nav class="navbar-default navbar-static-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rd-collapse">
+                    <span class="fa fa-bars"></span>
+                    <span class="sr-only screen-reader-text">Toggle navigation</span>
+                </button>
+                <a class="navbar-brand" href=" https://samnicholls.net/">Samposium</a>            </div>
+            
+            <div id="rd-collapse" class="collapse navbar-collapse">
+            
+            <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body class="post-template-default single single-post postid-966 single-format-standard">
+
+<div id="main-menu" class="navbar-nav nav"><ul>
+<li class="page_item page-item-8"><a href="https://samnicholls.net/about/">About Me</a></li>
+<li class="page_item page-item-11"><a href="https://samnicholls.net/talks/">Talks</a></li>
+<li class="page_item page-item-15"><a href="https://samnicholls.net/things-i-have-learned/">Things I Have Learned</a></li>
+</ul></div></body></html>
+        </div>
+
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="row"><!-- Content -->
+<section class="col-md-8 content-container">
+                          <article class="card post hentry post-966 type-post status-publish format-standard category-protocol-guides tag-dilution tag-equations tag-lab tag-master-mix tag-mathematics tag-pcr tag-polymerase-chain-reaction tag-protocol tag-technique tag-troubleshooting tag-working-mix" id="post-966">
+                <header class="entry-header">
+                        <h1 class="entry-title">A pretend biologist&#8217;s guide to running a PCR (polymerase chain reaction)</h1>                </header><!-- .entry-header -->
+
+                <div class="meta-well">
+                    <span style="margin-right:15px;" class=""><span class="fa fa-user"></span>&nbsp;&nbsp;&nbsp;<span class="author vcard"><a class="url fn n" href="https://samnicholls.net/about/">Sam Nicholls</a></span></span>
+
+                    <span style="margin-right:15px;" class="entry-date published updated post-date"><span class="fa fa-clock-o"></span>&nbsp;&nbsp; <time class="entry-date published" datetime="2016-06-21T00:39:02+01:00">21st June 2016</time><time class="updated" datetime="2016-06-21T10:57:07+01:00">21st June 2016</time></span>                    <span style="margin-right:15px;" class=""><span class="fa fa-comments-o"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/2016/06/21/pcr-protocol/#respond"><span class="dsq-postid" data-dsqidentifier="966 https://samnicholls.net/?p=966">No Comments yet</span></a></span>
+                    <span class=""><span class="fa fa-folder-open"></span>&nbsp;&nbsp;&nbsp;<a href="https://samnicholls.net/category/lab/protocol-guides/" rel="category tag">Protocol Guides</a></span>
+                </div>
+
+                <div class="entry-content"><h2>What the fuck is PCR?</h2>
+<p>PCR is a laboratory protocol for generating significant numbers of copies of a subsequence of a DNA template, via repeated exposure to an enzyme capable of synthesizing molecules of DNA.</p>
+<h2>How does it work?</h2>
+<ul>
+<li>Short nucleotide sequences called <strong>primers</strong> are specifically made-to-order to bind (complement) to the start and end of a sequence of interest (for some extracted DNA)</li>
+<li>DNA (the <strong>template</strong>) is prepared with those <strong>primers</strong>, <strong>dNTPs</strong> (basically loose nucleotides) and a <strong>polymerase</strong> enzyme</li>
+<li>Prepped solutions of between <code>20-50ul</code> are inserted in a <strong>thermal cycler</strong>: a machine that alters the temperature to control an exponential DNA amplification via repeated cycles (typically around 30) consisting of three stages:
+<ul>
+<li><strong>Denaturing</strong> template DNA melted at high temperature to yield single strands (exposing strands to primers)</li>
+<li><strong>Annealing</strong> temperature lowered<sup id="fnref-966-4"><a href="#fn-966-4" rel="footnote">1</a></sup> to anneal primers to single stranded template</li>
+<li><strong>Extending</strong><sup id="fnref-966-5"><a href="#fn-966-5" rel="footnote">2</a></sup> polymerase binds to both ends of primers and begins to elongate a new strand with the floating dNTPs</li>
+</ul>
+</li>
+<li>Each cycle creates two new double stranded DNAs from each molecule of DNA present, theoretically the DNA product doubles with each cycle<sup id="fnref-966-6"><a href="#fn-966-6" rel="footnote">3</a></sup></li>
+<li>Typically can amplify subsequences of template up to <code>10kbp</code></li>
+</ul>
+<h2>What do I need?</h2>
+<h4>Reagents</h4>
+<ul>
+<li>Ice box containing:
+<ul>
+<li>Taq polymerase</li>
+<li>Taq buffer</li>
+<li>Template DNA</li>
+<li>dNTP mix</li>
+<li>Forward and reverse primers</li>
+</ul>
+</li>
+<li>Fridge box containing:
+<ul>
+<li>HPLC-grade water</li>
+</ul>
+</li>
+</ul>
+<h4>Equipment</h4>
+<ul>
+<li>Vortex</li>
+<li>Centrifuge</li>
+<li>Thermal Cycler</li>
+<li>Access to HPLC-grade water dispenser and UV Crosslinker</li>
+</ul>
+<h4>Bits and pieces<sup id="fnref-966-1"><a href="#fn-966-1" rel="footnote">4</a></sup></h4>
+<ul>
+<li>P2, P10, P100, P200, P1000 pipettes (and appropriate tips)</li>
+<li>Eppendorf tubes (500ul, 1.5ml)</li>
+<li>PCR tubes (200ul) + caps (if not attached)</li>
+<li>Multi-format tube rack</li>
+<li>Waste bin</li>
+<li>Gloves</li>
+</ul>
+<h2>What are those things?</h2>
+<h4>Taq polymerase</h4>
+<p>A highly thermostable polymerase enzyme (a molecular machine for assembling long chains of nucleic acids) isolated from (and named after) the <em><strong>T</strong>hermus <strong>aq</strong>uaticus</em> bacterium; an extremophile that is capable of thriving in high temperature environments (favouring 70°C, but tolerating anything between 60-80°C). Polymerase drives the elongation or extension process of PCR. In the late 1980s, it was discovered that polymerase isolated from <em>Thermus aquaticus</em> could actually withstand the temperatures involved in the annealing step where DNA is melted into its two strands. The polymerase was refined and mass produced for commercial sale; now PCR could be completed without re-adding a polymerase at the end of every cycle!</p>
+<h4>Taq buffer</h4>
+<p>PCR buffers attempt to maintain optimal conditions for the activity of polymerases during PCR. Various ingredients can chelate ions that are required for enzymatic activity to reduce degradation of reagents, and unwanted reactions.</p>
+<h4>Template DNA</h4>
+<p>Your already extracted and purified DNA sample that contains some sequence that you desire to amplify.</p>
+<h4>dNTP Mix</h4>
+<p>Named so as <strong>deoxynucleoside triphosphate</strong> doesn&#8217;t roll off the tongue so well. <strong>dNTP mix</strong> is essentially a grab bag of the four nucleotides. During the elongation cycle of PCR, polymerases utilize free <strong>dNTP</strong>s to synthesize new chains of nucleic acids to create complementing strands.</p>
+<h4>Primers</h4>
+<p>A pair of short sequences (<code>15-30bp</code>) of nucleic acids designed to complement two ends of a target subsequence of interest on your <strong>template DNA</strong>. Good primers are <code>40-60%</code> GC-content, have similar annealing temperatures and should not be self-complementary, or complementary to another primer in the mix.</p>
+<h4>HPLC-grade water</h4>
+<p><strong>High-performance liquid chromatography</strong> (HPLC) is a technique to identify and separate individual components of a mixture. HPLC-grade water is deionized, filtered, UV-filtered and in general, pretty fucking clean. The goal is to prevent contamination of reagents with nucleases.</p>
+<h2>How do I make the PCR happen?</h2>
+<h3>Pre-prep</h3>
+<ul>
+<li>Gather equipment, ensure your reagents are not depleted, check whether someone has stolen the power lead for the thermal cycler</li>
+<li>Place tube racks in freezer to keep them cold (this helps maintain the integrity of reagents)</li>
+<li>Collect <strong>HPLC water</strong> (if necessary) and run through UV crosslinker to denature any residual proteins</li>
+</ul>
+<h3>Prep</h3>
+<ul>
+<li>Retrieve tube racks from freezer</li>
+<li>Move dNTPs, primers and template from ice box onto tube rack to thaw, it is essential that these are returned to the ice box as soon as possible once fully thawed</li>
+</ul>
+<p class="danger"><b>NEVER</b> allow <b>Taq Polymerase</b> to reach room temperature.</p>
+<p class="warning"><b>Ensure</b> reagents have fully thawed to avoid aspirating solutes of incorrect concentrations.</p>
+<ul>
+<li>Briefly vortex and centrifuge (a few seconds at ~<code>5-10Krpm</code>) <strong>Taq buffer</strong> and <strong>dNTP mix</strong></li>
+</ul>
+<p class="note">The buffer must be vortexed to ensure its components are mixed thoroughly.</p>
+<h3>Prepare a working dNTP mix (if required)</h3>
+<p><strong>dNTP mix</strong> is often shipped at a high concentration (<code>100mM</code>) and in such cases must be diluted to a more practical &#8220;working mix&#8221; before it is practical to pipette into PCR tubes. This also prevents having to repeatedly freeze-thaw your master mix.</p>
+<ul>
+<li>Calculate the volume of master <strong>dNTP mix</strong> required to create a more practical solution; say <code>250ul</code> at a concentration of <code>2mM</code>:<br />
+<img src="//s0.wp.com/latex.php?latex=vol_%7B%5Ctext%7Bfrom+master%7D%7D+%3D+%5Cfrac%7Bvol_%7B%5Ctext%7Bdesired%7D%7D+%5Ctimes+conc_%7B%5Ctext%7Bdesired%7D%7D%7D%7Bconc_%7B%5Ctext%7Bof+master%7D%7D%7D%5C%5C++vol_%7B%5Ctext%7Bfrom+master%7D%7D+%3D+%5Cfrac%7B250ul+%5Ctimes+2mM%7D%7B100mM%7D+%3D+%5Cfrac%7B500%7D%7B100%7D+%3D+5ul++++&#038;bg=ffffff&#038;fg=000&#038;s=2" alt="vol_{&#92;text{from master}} = &#92;frac{vol_{&#92;text{desired}} &#92;times conc_{&#92;text{desired}}}{conc_{&#92;text{of master}}}&#92;&#92;  vol_{&#92;text{from master}} = &#92;frac{250ul &#92;times 2mM}{100mM} = &#92;frac{500}{100} = 5ul    " title="vol_{&#92;text{from master}} = &#92;frac{vol_{&#92;text{desired}} &#92;times conc_{&#92;text{desired}}}{conc_{&#92;text{of master}}}&#92;&#92;  vol_{&#92;text{from master}} = &#92;frac{250ul &#92;times 2mM}{100mM} = &#92;frac{500}{100} = 5ul    " class="latex" /></li>
+<li>Aspirate and dispense the solvent first (it is easier to pipette a small volume into a larger one). For our <code>250ul</code> working mix that contains <code>5ul</code> of the master mix, we must dispsense <code>245ul</code> of <strong>HPLC water</strong> into a <code>1.5ml</code> Eppendorf tube.</li>
+<li>Vortex and centrifuge the <strong>dNTP mix</strong> briefly if you have not already done so</li>
+<li>Add <code>5ul</code> of master mix to the new working mix tube</li>
+<li>Aspirate and dispense repeatedly and carefully to wash the pipette tip and mix the new solution</li>
+<li>Return the <code>100mM</code> master mix and new suitably labelled <code>2mM</code> working mix to the ice box</li>
+</ul>
+<h3>Preparing the PCR tubes</h3>
+<ul>
+<li>Lay out the necessary number of required PCR tubes on a cold rack</li>
+<li>Calculate all necessary dilutions <strong>before</strong> you begin pipetting (consider your protocol parameters; reaction size, desired dilutions of template, primer and dNTP mix):
+<ul>
+<li><strong>dNTPs</strong><br />
+<img src="//s0.wp.com/latex.php?latex=vol_%7B%5Ctext%7Bfrom+working%7D%7D+%3D+%5Cfrac%7Bvol_%7B%5Ctext%7BPCR+reaction%7D%7D+%5Ctimes+conc_%7B%5Ctext%7Bfor+PCR%7D%7D%7D%7Bconc_%7B%5Ctext%7Bof+working%7D%7D%7D%5C%5C++++++++vol_%7B%5Ctext%7Bfrom+working%7D%7D+%3D+%5Cfrac%7B50ul+%5Ctimes+0.2mM%7D%7B2mM%7D+%3D+%5Cfrac%7B10%7D%7B2%7D+%3D+5ul++++++++&#038;bg=ffffff&#038;fg=000&#038;s=2" alt="vol_{&#92;text{from working}} = &#92;frac{vol_{&#92;text{PCR reaction}} &#92;times conc_{&#92;text{for PCR}}}{conc_{&#92;text{of working}}}&#92;&#92;        vol_{&#92;text{from working}} = &#92;frac{50ul &#92;times 0.2mM}{2mM} = &#92;frac{10}{2} = 5ul        " title="vol_{&#92;text{from working}} = &#92;frac{vol_{&#92;text{PCR reaction}} &#92;times conc_{&#92;text{for PCR}}}{conc_{&#92;text{of working}}}&#92;&#92;        vol_{&#92;text{from working}} = &#92;frac{50ul &#92;times 0.2mM}{2mM} = &#92;frac{10}{2} = 5ul        " class="latex" /></li>
+<li><strong>Primers</strong> (forward and reverse)<br />
+<img src="//s0.wp.com/latex.php?latex=vol_%7B%5Ctext%7Bof+primer%7D%7D+%3D+%5Cfrac%7Bvol_%7B%5Ctext%7BPCR+reaction%7D%7D+%5Ctimes+conc_%7B%5Ctext%7Bfor+PCR%7D%7D%7D%7Bconc_%7B%5Ctext%7Bof+primer%7D%7D%7D+%3D+Xul++++++++&#038;bg=ffffff&#038;fg=000&#038;s=2" alt="vol_{&#92;text{of primer}} = &#92;frac{vol_{&#92;text{PCR reaction}} &#92;times conc_{&#92;text{for PCR}}}{conc_{&#92;text{of primer}}} = Xul        " title="vol_{&#92;text{of primer}} = &#92;frac{vol_{&#92;text{PCR reaction}} &#92;times conc_{&#92;text{for PCR}}}{conc_{&#92;text{of primer}}} = Xul        " class="latex" /></p>
+<div class="message">Although the protocol specification requires a final concentration of between <code>0.1-1.0uM</code> of each primer, it seems that <i>in general</i> (your mileage will vary), people tend to add excess to give a final concentration up to 2uM. For example <code>2ul</code> of a <code>50uM</code> (<code>50pmoles/ul</code>) working primer solution.</div>
+</li>
+<li><strong>Template</strong><br />
+<img src="//s0.wp.com/latex.php?latex=vol_%7B%5Ctext%7Bof+DNA%7D%7D+%3D+%5Cfrac%7Bvol_%7B%5Ctext%7BPCR+reaction%7D%7D+%5Ctimes+conc_%7B%5Ctext%7Bfor+PCR%7D%7D%7D%7Bconc_%7B%5Ctext%7Bof+DNA%7D%7D%7D+%3D+Zul++++++++&#038;bg=ffffff&#038;fg=000&#038;s=2" alt="vol_{&#92;text{of DNA}} = &#92;frac{vol_{&#92;text{PCR reaction}} &#92;times conc_{&#92;text{for PCR}}}{conc_{&#92;text{of DNA}}} = Zul        " title="vol_{&#92;text{of DNA}} = &#92;frac{vol_{&#92;text{PCR reaction}} &#92;times conc_{&#92;text{for PCR}}}{conc_{&#92;text{of DNA}}} = Zul        " class="latex" /></li>
+</ul>
+</li>
+<li>Remove <strong>Taq Buffer</strong> from ice box and pipette the volume required by your protocol (my protocol stated <code>10ul</code>) into all tubes, return the temperature-sensitive <strong>Taq Buffer</strong> to ice (or the freezer) as soon as possible</li>
+</ul>
+<p class="success">It is highly recommended that <b>Taq Buffer</b> is the reagent to be added first. As a buffer, it is responsible for preventing unwanted enzymatic activity such as denaturing (or early annealing) of template DNA and primers.</p>
+<ul>
+<li>The rest of the reagents can be added in no particular order, <strong>with the exception of Taq Polymerase</strong>, which comes later:
+<ul>
+<li><strong>dNTPs</strong></li>
+<li><strong>Primers</strong> (ensure both forward and reverse primers are added)</li>
+<li><strong>Template DNA</strong></li>
+</ul>
+</li>
+<li>For each tube, sum the volumes of its reagents (don&#8217;t forget the polymerase, which is not yet in the tube) and subtract this total from the target volume required by your protocol (again, here, <code>50ul</code>)</li>
+<li>Add those amounts of <strong>HPLC water</strong> (the volume to add may differ between tubes if differing volumes of primer or template were added) to bring up the total volume of each sample tube to the target volume (less the polymerase)</li>
+<li>Ready (switch on and program) the thermal cycler before adding <strong>Taq Polymerase</strong> (reactions begin as soon as it is added, albeit at room temperature)</li>
+<li>Remove <strong>Taq Polymerase</strong> from ice, vortex gently and centrifuge briefly to remove excess from the walls of its tube<sup id="fnref-966-7"><a href="#fn-966-7" rel="footnote">5</a></sup></li>
+<li>Add between <code>0.5–2.0 units</code> of polymerase per <code>50ul</code> reaction, our protocol recommended <code>1.25u</code>, I added slightly more to make it easier to aspirate with a pipette, return to ice (or freezer) as soon as possible</li>
+<li>Seal PCR tubes (close lids or seal caps<sup id="fnref-966-2"><a href="#fn-966-2" rel="footnote">6</a></sup>)</li>
+</ul>
+<h3>Thermal Cycling</h3>
+<ul>
+<li>Load tubes into thermal cycler immediately (your reaction has begun!)</li>
+</ul>
+<p class="success">If you are feeling particularly prepared, you could preheat the lid of your cycler to ensure the hot-start PCR begins more quickly.</p>
+<ul>
+<li>Ensure lid is as tight as possible (if it has a lid that needs manual tightening to push the heated block<sup id="fnref-966-3"><a href="#fn-966-3" rel="footnote">7</a></sup> against the tops of tubes)</li>
+<li>Load and check program schedule (does it have a sensible run time? Has someone in your lab accidentally sabotaged it in the last five minutes?)</li>
+</ul>
+<p class="warning"><b>Ensure</b> there is an <i>infinite</i> store step at less than 5°C following the end of the final cycle of your program. Unless you want all of your work destroyed at room temperature. This is especially important if you are running PCR before going home for 12 hours.</p>
+<ul>
+<li>Run program!</li>
+<li>Watch in horror as you allow the machines to take over everything and probably ruin your experiment</li>
+</ul>
+<h2>What do I do now?</h2>
+<ul>
+<li><strong>PCR product must be kept in the fridge or freezer</strong></li>
+<li>Verify fragments of the expected size (or anything at all) were amplified with gel electrophoresis</li>
+</ul>
+<h2>How do I fuck it up?</h2>
+<p>There are a multitude of ways that PCR can fail. Due to the number of reagents required in each tube, and lots of pipetting it is quite trivial to make a mistake. Helpfully, it is typically not possible to establish the cause and the process must be repeated. Lots of attention to detail is required, especially if there is more than one template, or more than one set of primers that make up individual reactions.</p>
+<ul>
+<li>The easiest way to fuck up PCR is to forget something, each PCR tube needs all of the components and even the smallest distraction can cause you to skip, forget or duplicate a step</li>
+<li>Applying the wrong template or primer to a particular reaction tube</li>
+<li>Fucking up your mathematics (usually by forgetting to ensure all the molarity or volume units are the same) for dilutions, yielding low concentration of a reagent (in general it seems PCR is more prone to failure under conditions where reagents are in concentrations that are too low, rather than too high &#8212; with the exception of buffer<sup id="fnref-966-8"><a href="#fn-966-8" rel="footnote">8</a></sup>).</li>
+<li>Contaminate your reagents by forgetting to change your pipette tip, this is particularly bad as it destroys your expensive reagent to boot</li>
+<li>Suboptimal annealing temperatures were used during thermal cycling (consult the documentation for your primer set)</li>
+<li>Your template DNA is damaged (poor storage, bad preparation)</li>
+<li>Your primers suck (or are damaged, or perhaps one of the pair binds to another location)</li>
+<li>You might have forgotten to vortex your <strong>Taq buffer</strong> before use and it happened to have separated during storage</li>
+<li>Adding <strong>polymerase</strong> first might have caused the reaction to start too early</li>
+<li>Water was not sterile</li>
+<li>The day ends in a &#8216;y&#8217;</li>
+</ul>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-966-4">
+Specific annealing temperatures depend on the primers and a recommended temperature would be provided by the manufacturer.&#160;<a href="#fnref-966-4" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-5">
+The rule of thumb is the elongation step should last <code>1min/kbp</code> of desired target sequence.&#160;<a href="#fnref-966-5" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-6">
+The first five cycles are critical for this reason.&#160;<a href="#fnref-966-6" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-1">
+Also known as &#8220;the fucking obvious&#8221; to your typical microbiologist. However, I have not even held a pipette before, so it seems nice to have an explicit list of everything that one needs.&#160;<a href="#fnref-966-1" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-7">
+This is pretty important as Taq polymerase is pretty fucking expensive, you want to minimize the amount of it that gets caught on the outer wall of your pipette tip.&#160;<a href="#fnref-966-7" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-2">
+If using PCR tubes that require caps, ensure each of them click into place and are tightly sealed. Any gaps will cause the contents of the PCR tube to evaporate into the cycler, which is somewhat problematic as you can&#8217;t run a gel without any product. On the light side, you at least know the cause of an empty (or near empty) tube.&#160;<a href="#fnref-966-2" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-3">
+The heated lid prevents your sample evaporating and condensing on the lid (leaving your sample with less water). Older thermal cyclers lack this feature and require you to add a small layer of oil on top of your reaction mix instead.&#160;<a href="#fnref-966-3" rev="footnote">&#8617;</a>
+</li>
+<li id="fn-966-8">
+In particular, adding too much buffer (by not diluting enough) will leave too much magnesium in your reaction and cause your polymerases to be &#8220;promiscuous&#8221;; binding to primers that are not specifically bound to template and elongating strands that are undesired.&#160;<a href="#fnref-966-8" rev="footnote">&#8617;</a>
+</li>
+</ol>
+</div>
+</div>
+                
+                        <div class="tag-well"><span><span class="fa fa-tags"></span>&nbsp;&nbsp; <a href="https://samnicholls.net/tag/dilution/" rel="tag">dilution</a>,&nbsp; <a href="https://samnicholls.net/tag/equations/" rel="tag">equations</a>,&nbsp; <a href="https://samnicholls.net/tag/lab/" rel="tag">lab</a>,&nbsp; <a href="https://samnicholls.net/tag/master-mix/" rel="tag">master mix</a>,&nbsp; <a href="https://samnicholls.net/tag/mathematics/" rel="tag">mathematics</a>,&nbsp; <a href="https://samnicholls.net/tag/pcr/" rel="tag">pcr</a>,&nbsp; <a href="https://samnicholls.net/tag/polymerase-chain-reaction/" rel="tag">polymerase chain reaction</a>,&nbsp; <a href="https://samnicholls.net/tag/protocol/" rel="tag">protocol</a>,&nbsp; <a href="https://samnicholls.net/tag/technique/" rel="tag">technique</a>,&nbsp; <a href="https://samnicholls.net/tag/troubleshooting/" rel="tag">troubleshooting</a>,&nbsp; <a href="https://samnicholls.net/tag/working-mix/" rel="tag">working mix</a></span></div>
+                
+                <nav class="further-reading">
+	<div class="previous">
+		<span>Previous Post</span>
+		<a href="https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/">An idiot&#8217;s guide to Python documentation with Sphinx and ReadTheDocs</a>
+	</div>
+	<div class="next">
+		<span>Next Post</span>
+		<a href="https://samnicholls.net/2016/06/26/edta-buffer-protocol/">A pretend biologist&#8217;s guide to making an EDTA chelating (&#8220;buffer&#8221;) solution</a>
+	</div>
+</nav>            </article>
+                                <div class="card">
+
+<div id="disqus_thread"></div>
+                </div>
+    
+</section>
+
+        <!-- Sidebar -->
+        <aside class="col-md-4 sidebar-container">
+		            <div id="widget-area" class="widget-area" role="complementary">
+                <div id="custom_html-3" class="widget_text card widget widget_custom_html"><div class="textwidget custom-html-widget"><img src="https://pbs.twimg.com/profile_images/1044255545610436609/wt33ZbtU_400x400.jpg" height=120 style="margin-top: 20px; margin-right:10px; float: left;" alt="Sam Nicholls" />
+<div style="padding-top:15px; line-height: normal"><b style="font-size: 1.2em">Sam Nicholls</b><br><span style="font-size: 0.9em;">Haplotype Wrangler at University of Birmingham.<br>I tell computers to do things, then I write about how it all went wrong.</span></div></div></div><div id="search-2" class="card widget widget_search"><form style="margin-top:15px" action="https://samnicholls.net/" id="searchform" method="get" role="form">
+    <div class="form-group">
+        <input type="text" class="form-control" name="s" id="s" placeholder="e.g. Search...">
+    </div>
+</form>
+</div><div id="twitter_timeline-5" class="card widget widget_twitter_timeline"><a class="twitter-timeline" data-height="400" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/samstudio8">My Tweets</a></div><div id="categories-5" class="card widget widget_categories"><h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-2"><a href="https://samnicholls.net/category/bioinf/">Bioinformatics</a>
+<ul class='children'>
+	<li class="cat-item cat-item-8"><a href="https://samnicholls.net/category/bioinf/au-phd/">AU-PhD</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://samnicholls.net/category/bioinf/sanger-qc/" title="Sanger QC Project">Sanger-QC</a>
+</li>
+	<li class="cat-item cat-item-61"><a href="https://samnicholls.net/category/bioinf/tools/">Tools</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-185"><a href="https://samnicholls.net/category/bioinf/tools/chitin/">chitin</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-80"><a href="https://samnicholls.net/category/devops/">Devops</a>
+</li>
+	<li class="cat-item cat-item-114"><a href="https://samnicholls.net/category/event/">Event</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="https://samnicholls.net/category/gadgets/">Gadgets</a>
+</li>
+	<li class="cat-item cat-item-176"><a href="https://samnicholls.net/category/hardware/">Hardware</a>
+<ul class='children'>
+	<li class="cat-item cat-item-223"><a href="https://samnicholls.net/category/hardware/beehive-monitor/">Beehive Monitor</a>
+</li>
+	<li class="cat-item cat-item-178"><a href="https://samnicholls.net/category/hardware/esp8266/">ESP8266</a>
+</li>
+	<li class="cat-item cat-item-236"><a href="https://samnicholls.net/category/hardware/lego-sequencer/">Lego Sequencer</a>
+</li>
+	<li class="cat-item cat-item-177"><a href="https://samnicholls.net/category/hardware/lightstick/">Lightstick</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-151"><a href="https://samnicholls.net/category/lab/">Lab</a>
+<ul class='children'>
+	<li class="cat-item cat-item-150"><a href="https://samnicholls.net/category/lab/protocol-guides/">Protocol Guides</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://samnicholls.net/category/meta/">Meta</a>
+</li>
+	<li class="cat-item cat-item-62"><a href="https://samnicholls.net/category/mysteries/">Mysteries</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://samnicholls.net/category/personal/">Personal</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://samnicholls.net/category/photo/">Photography</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="https://samnicholls.net/category/programming/">Programming</a>
+<ul class='children'>
+	<li class="cat-item cat-item-145"><a href="https://samnicholls.net/category/programming/documentation/">Documentation</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="https://samnicholls.net/category/programming/python/">Python</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-48"><a href="https://samnicholls.net/category/status-report/">Status Report</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="https://samnicholls.net/category/sysadm/">System Administration</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://samnicholls.net/category/uncategorised/">Uncategorised</a>
+</li>
+			</ul>
+
+			</div>            </div>
+		        </aside>
+    </div>
+
+</div> <!-- /container -->
+
+<footer id="main-footer" class="bg-primary">
+	<div id="footer-widgets" class="container">
+		    </div>
+</footer>
+
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/comment-reply.min.js?ver=5.7.5' id='comment-reply-js'></script>
+<script type='text/javascript' id='disqus_count-js-extra'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"samposium-blog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17' id='disqus_count-js'></script>
+<script type='text/javascript' id='disqus_embed-js-extra'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"966 https:\/\/samnicholls.net\/?p=966","disqusShortname":"samposium-blog","disqusTitle":"A pretend biologist\u2019s guide to running a PCR (polymerase chain reaction)","disqusUrl":"https:\/\/samnicholls.net\/2016\/06\/21\/pcr-protocol\/","postId":"966"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17' id='disqus_embed-js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202335' id='devicepx-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-content/plugins/jetpack/_inc/twitter-timeline.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://samnicholls.net/wp-includes/js/wp-embed.min.js?ver=5.7.5' id='wp-embed-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202335.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.9',blog:'101350222',post:'966',tz:'1',srv:'samnicholls.net'} ]);
+	_stq.push([ 'clickTrackerInit', '101350222', '966' ]);
+</script>
+
+<script type="text/javascript">
+(function() {
+  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+      document.createTextNode("@-ms-viewport{width:auto!important}")
+    );
+    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+  }
+})();
+
+var collapsed = false;
+jQuery( document ).ready(function($) {
+    $('.navbar-toggle').click(function(){
+        console.log(collapsed);
+        if(collapsed) {
+            $('.navbar-header > button').html('<i class="fa fa-bars"></i>');
+        } else {
+            $('.navbar-header > button').html('<i class="fa fa-times"></i>');
+        }
+        $('.navbar-collapse').toggle(200);
+        collapsed = !collapsed;
+    });
+});
+</script>
+	
+</body>
+
+</html>
