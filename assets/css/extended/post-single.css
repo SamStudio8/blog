@@ -1,0 +1,29 @@
+.footnotes {
+    font-size: 0.8rem;
+}
+
+.post-footer {
+    margin-top: 35px;
+}
+
+.post-footer hr {
+    background: rgb(108, 108, 108);
+    height: 2px;
+    border: 0;
+}
+
+.post-footer-list {
+    font-size: 0.9rem;
+}
+
+.post-tags a {
+    line-height: inherit;
+    padding-inline-start: 7px;
+    padding-inline-end: 7px;
+    font-size: inherit;
+}
+
+.post-tags-icons {
+    height: 0.9rem;
+    width: 0.9rem;
+}

@@ -1,0 +1,30 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <div style="display: flex;">
+        <div class="pfp" style="padding: 85px 20px 0 20px; width: {{ .imageWidth | default 150 }}">
+        {{- if .imageUrl -}}
+            {{- $img := "" }}
+            {{- if not (urls.Parse .imageUrl).IsAbs }}
+                {{- $img = resources.Get .imageUrl }}
+            {{- end }}
+            <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" style="border-radius: 50%; max-width: max-content;" />
+        {{- end }}
+    </div>
+    <div class="txt">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+        <h3>{{ .Subtitle | markdownify }}</h3>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" site.Params.socialIcons }}
+    </footer>
+    </div>
+    </div>
+</article>
+<h2 style="margin-bottom: 20px"><code>$ ls -lt samposium</code></h2>
+
+{{- end -}}

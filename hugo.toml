@@ -1,0 +1,95 @@
+baseURL = 'https://samnicholls.net/'
+languageCode = 'en-gb'
+title = 'Samposium'
+theme = 'PaperMod'
+
+[params]
+defaultTheme = 'dark'
+disableThemeToggle = true
+ShowBreadCrumbs = false
+ShowCodeCopyButtons = true
+ShowReadingTime = true
+description = "Sam Nicholls: Tat tinkerer, bug hunter, burger flipper. I mostly write about things I have made and bad code I have written."
+Image = "samstudio8_pfp.jpg"
+
+[params.homeInfoParams]
+title = "i am doctor sam nicholls"
+subtitle = "Tat tinkerer, bug hunter, burger flipper"
+content = """
+Prima donna programmer at Oxford Nanopore. I make [our bioinformatics workflows](https://labs.epi2me.io/) run harder, better, faster, stronger.
+In a previous life I wrote [a long book](http://hdl.handle.net/2160/cfc1d884-cc17-439f-be6e-c3ab6d79ee1d) and [a nice paper](https://academic.oup.com/bioinformatics/article/37/10/1360/5988481) about metagenomic haplotyping, but you probably know me from the [UK's COVID consortium](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02395-y).
+One half of [Sam & Tom Industrys](https://twitter.com/samtomindustrys), creators of cheap labware and [Monster DNA Lab](https://monster-lab.org/).  
+I will be writing about tat I have made and bad code I have written.
+"""
+imageUrl = "samstudio8_pfp.jpg"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/samstudio8"
+
+[[params.socialIcons]]
+name = "mastodon"
+url = "https://genomic.social/@samstudio8"
+
+[[params.socialIcons]]
+name = "instagram"
+url = "https://www.instagram.com/iamdoctorsamnicholls/"
+
+[[params.socialIcons]]
+name = "steam"
+url = "https://steamcommunity.com/id/samstudio8"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://www.twitter.com/samstudio8/"
+
+
+
+[params.label]
+text = 'samposium '
+icon = "samstudio8_pfp.jpg"
+
+[params.logo]
+logoCursorColor    = "#67a2c9"
+logoCursorAnimate  = "1s"
+
+[params.assets]
+disableHLJS = true
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[languages.en]
+languageName = "English"
+weight = 1
+
+
+  [languages.en.params.logo]
+  logoText = "samposium"
+
+[[languages.en.menu.main]]
+name = "archive/"
+url = "archives"
+weight = 5
+
+#[[languages.en.menu.main]]
+#name = "Search"
+#url = "search/"
+#weight = 10
+
+[[languages.en.menu.main]]
+name = "series/"
+url = "series/"
+weight = 10
+
+[[languages.en.menu.main]]
+name = "tags/"
+url = "tags/"
+weight = 10
+
+[[languages.en.menu.main]]
+name = "v1/"
+url = "v1/"
+weight = 100

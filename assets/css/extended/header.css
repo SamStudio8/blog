@@ -1,0 +1,13 @@
+.header {
+    background: #1b1c1d;
+}
+
+.nav {
+    font-family: monospace;
+}
+
+@keyframes cursor {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
