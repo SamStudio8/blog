@@ -19,7 +19,7 @@ The trials and tribulations of [the life of a PhD candidate](https://samnicholls
 The blog took a back seat as I graduated to my post-doctoral position at the Loman Lab; where Nick and I harnessed the power of Twitter short form content to get our research out to a wider community of shortening attention spans.
 
 Of course, everything was interrupted in 2020.
-Our lab dropped its research activities to pivot to provide the infrastructure to centralise the collection and analysis of all the UK's COVID genome data.
+Our lab dropped its research activities to pivot to provide the infrastructure to centralise the collection and analysis of all the UK's COVID genome data[^infra].
 As a large endeavour between so many academic institutes across the UK, the usual sensibilities around credit were heightened; but on top of that COG-UK was a close partnership between the UK's health agencies which simply made writing about our work feel politically sensitive at the time.
 There were other reasons to stay on the down-low, members of our project would occasionally get unpleasant messages from those who [blamed COG-UK for discovering the variant that stole Christmas](https://www.whatisbiotechnology.org/index.php/exhibitions/coguk/index/variants).
 
@@ -39,3 +39,5 @@ I was immediately reminded of the time I searched the internet for how to safely
 Writing things down for later retrieval seems pretty overpowered.
 
 If only I had somewhere to do that.
+
+[^infra]: 59.4 million API requests and counting.
