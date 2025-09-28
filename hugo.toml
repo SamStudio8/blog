@@ -9,12 +9,12 @@ disableThemeToggle = true
 ShowBreadCrumbs = false
 ShowCodeCopyButtons = true
 ShowReadingTime = true
-description = "Sam Nicholls: Tat tinkerer, bug hunter, burger flipper. I mostly write about things I have made and bad code I have written."
+description = "Sam Nicholls: Tat tinkerer, bug hunter, pizza launcher. I mostly write about things I have made and bad code I have written."
 Image = "samstudio8_pfp.jpg"
 
 [params.homeInfoParams]
 title = "i am doctor sam nicholls"
-subtitle = "Tat tinkerer, bug hunter, burger flipper"
+subtitle = "Tat tinkerer, bug hunter, pizza launcher"
 content = """
 Prima donna programmer at Oxford Nanopore. I make [our bioinformatics workflows](https://labs.epi2me.io/) run harder, better, faster, stronger.
 In a previous life I wrote [a long book](http://hdl.handle.net/2160/cfc1d884-cc17-439f-be6e-c3ab6d79ee1d) and [a nice paper](https://academic.oup.com/bioinformatics/article/37/10/1360/5988481) about metagenomic haplotyping, but you probably know me from the [UK's COVID consortium](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02395-y).
