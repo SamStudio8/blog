@@ -22,7 +22,7 @@ I am going to blame the COVID for this blatant computer misuse and speak no more
 
 Setting up a blog is a romantic activity best shared with a partner; and I was not alone in my endeavours two years ago.
 My partner Samantha also set up a nice Hugo blog in our COVID haze.
-However, Samantha has a much better track record of actually finishing tasks, and returned to theirs to resolve the friction in writing and publishing [sap218.uk](https://sap218.uk) by activating Github Pages on the repository.
+However, Samantha has a much better track record of actually finishing tasks, and returned to theirs to resolve the friction in writing and publishing [sap218.uk](https://sap218.uk)[^sap218] by activating Github Pages on the repository.
 
 I'd used Github Pages in a distant memory that involved an upsetting amount of Ruby and not thought about it since.
 Samantha assured me that times had changed and together with Github Actions, publishing a blog with Hugo was merely a few clicks away.
@@ -58,3 +58,4 @@ Two years late but the blog has officially been migrated, and I am one step clos
 [^template]: Uninterestingly, I removed a bit of header that caused an unwanted glyph in the navbar, and changed a partial to take the `site.Params` object in whole to fix a rather unintelligible "can't evaluate field align in type []interface {}" error [#649ecab](https://github.com/SamStudio8/blog/commit/649ecab8fd61e956a92da3f025705f1a364b6e38)
 [^domain]: [Managing a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 [^static]: When I first checked the v1 content as served from the `static/` directory on the `github.io` website (before I published to my custom domain), I had problems with missing static content. This was because the repo was served from `samstudio.github.io/blog`, but all the assets from my old blog were littered with URLs expecting to be served from the root. I could have fixed this by rewriting all the static content to use root-relative URLs, but the problem simply went away when I served the content from the root of `samnicholls.net` as I'd always intended anyway.
+[^sap218]: A good website for ontology enjoyers.
